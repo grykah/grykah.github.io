@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.74.2" />
+
+
+<title>Plotting London Boroughs - Hailey Gryka</title>
+<meta property="og:title" content="Plotting London Boroughs - Hailey Gryka">
+
+
+  <link href='/logo.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="https://github.com/grykah">GitHub</a></li>
+    
+    <li><a href="https://www.linkedin.com/in/hailey-g-96382a18/">Linked-In</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">6 min read</span>
+    
+
+    <h1 class="article-title">Plotting London Boroughs</h1>
+
+    
+    <span class="article-date">2020-07-19</span>
+    
+
+    <div class="article-content">
+      
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<div id="section-introduction" class="section level2">
+<h2>Introduction</h2>
+<p>This Rmarkdown document shows the use of both R and Python for analyzing the London Boroughs dataset. The <code>reticulate</code> library allows us to use Python code in an R environment.</p>
+</div>
+<div id="section-load-libraries" class="section level2">
+<h2>Load Libraries</h2>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## -- Attaching packages ------------------------------ tidyverse 1.3.0 --</code></pre>
+<pre><code>## v ggplot2 3.3.2     v purrr   0.3.4
+## v tibble  3.0.3     v dplyr   1.0.0
+## v tidyr   1.1.0     v stringr 1.4.0
+## v readr   1.3.1     v forcats 0.5.0</code></pre>
+<pre><code>## -- Conflicts --------------------------------- tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>library(reticulate) #To use python
+library(lubridate) #To deal with date fields</code></pre>
+<pre><code>## 
+## Attaching package: &#39;lubridate&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     date, intersect, setdiff, union</code></pre>
+<pre class="r"><code>library(shiny) #For interactive widgets
+library(scales)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;scales&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     discard</code></pre>
+<pre><code>## The following object is masked from &#39;package:readr&#39;:
+## 
+##     col_factor</code></pre>
+<pre class="r"><code>theme_set(theme_light())
+reticulate::use_python(&#39;C:\\Users\\Hailey\\anaconda3\\python.exe&#39;, required = T)</code></pre>
+</div>
+<div id="section-data-ingestion" class="section level2">
+<h2>Data Ingestion</h2>
+<p>We can use Python code to read in the data.</p>
+<pre class="python"><code>import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+url_LondonHousePrices = &quot;https://data.london.gov.uk/download/uk-house-price-index/70ac0766-8902-4eb5-aab5-01951aaed773/UK%20House%20price%20index.xls&quot;
+properties = pd.read_excel(url_LondonHousePrices, sheet_name=&#39;Average price&#39;, index_col= None)
+properties.head()</code></pre>
+<pre><code>##   Unnamed: 0 City of London  ... Unnamed: 47    England
+## 0        NaT      E09000001  ...         NaN  E92000001
+## 1 1995-01-01          91449  ...         NaN    53202.8
+## 2 1995-02-01        82202.8  ...         NaN    53096.2
+## 3 1995-03-01        79120.7  ...         NaN    53201.3
+## 4 1995-04-01        77101.2  ...         NaN    53590.9
+## 
+## [5 rows x 49 columns]</code></pre>
+<p>R can now be used to reference <code>properties</code> and clean up the data using functions from various packages in the <code>tidyverse</code>.</p>
+<pre class="r"><code>properties &lt;- py$properties
+glimpse(properties)</code></pre>
+<pre><code>## Rows: 304
+## Columns: 49
+## $ `Unnamed: 0`           &lt;dttm&gt; NA, 1994-12-31 17:00:00, 1995-01-31 17:00:0...
+## $ `City of London`       &lt;list&gt; [&quot;E09000001&quot;, 91448.98, 82202.77, 79120.7, ...
+## $ `Barking &amp; Dagenham`   &lt;list&gt; [&quot;E09000002&quot;, 50460.23, 51085.78, 51268.97,...
+## $ Barnet                 &lt;list&gt; [&quot;E09000003&quot;, 93284.52, 93190.17, 92247.52,...
+## $ Bexley                 &lt;list&gt; [&quot;E09000004&quot;, 64958.09, 64787.92, 64367.49,...
+## $ Brent                  &lt;list&gt; [&quot;E09000005&quot;, 71306.57, 72022.26, 72015.76,...
+## $ Bromley                &lt;list&gt; [&quot;E09000006&quot;, 81671.48, 81657.56, 81449.31,...
+## $ Camden                 &lt;list&gt; [&quot;E09000007&quot;, 120932.9, 119508.9, 120282.2,...
+## $ Croydon                &lt;list&gt; [&quot;E09000008&quot;, 69158.16, 68951.1, 68712.44, ...
+## $ Ealing                 &lt;list&gt; [&quot;E09000009&quot;, 79885.89, 80897.07, 81379.86,...
+## $ Enfield                &lt;list&gt; [&quot;E09000010&quot;, 72514.69, 73155.2, 72190.44, ...
+## $ Greenwich              &lt;list&gt; [&quot;E09000011&quot;, 62300.1, 60993.27, 61377.83, ...
+## $ Hackney                &lt;list&gt; [&quot;E09000012&quot;, 61296.53, 63187.08, 63593.3, ...
+## $ `Hammersmith &amp; Fulham` &lt;list&gt; [&quot;E09000013&quot;, 124902.9, 122087.7, 120635.9,...
+## $ Haringey               &lt;list&gt; [&quot;E09000014&quot;, 76287.57, 78901.21, 78521.95,...
+## $ Harrow                 &lt;list&gt; [&quot;E09000015&quot;, 84769.53, 83396.11, 83416.24,...
+## $ Havering               &lt;list&gt; [&quot;E09000016&quot;, 68000.14, 69393.51, 69368.02,...
+## $ Hillingdon             &lt;list&gt; [&quot;E09000017&quot;, 73834.83, 75031.07, 74188.67,...
+## $ Hounslow               &lt;list&gt; [&quot;E09000018&quot;, 72231.71, 71051.56, 72097.99,...
+## $ Islington              &lt;list&gt; [&quot;E09000019&quot;, 92516.49, 94342.37, 93465.86,...
+## $ `Kensington &amp; Chelsea` &lt;list&gt; [&quot;E09000020&quot;, 182694.8, 182345.2, 182878.8,...
+## $ `Kingston upon Thames` &lt;list&gt; [&quot;E09000021&quot;, 80875.85, 81230.14, 81111.49,...
+## $ Lambeth                &lt;list&gt; [&quot;E09000022&quot;, 67770.99, 65381.52, 66336.52,...
+## $ Lewisham               &lt;list&gt; [&quot;E09000023&quot;, 60491.26, 60869.27, 60288.03,...
+## $ Merton                 &lt;list&gt; [&quot;E09000024&quot;, 82070.61, 79982.75, 80661.68,...
+## $ Newham                 &lt;list&gt; [&quot;E09000025&quot;, 53539.32, 53153.88, 53458.26,...
+## $ Redbridge              &lt;list&gt; [&quot;E09000026&quot;, 72189.58, 72141.63, 72501.36,...
+## $ `Richmond upon Thames` &lt;list&gt; [&quot;E09000027&quot;, 109326.1, 111103, 107325.5, 1...
+## $ Southwark              &lt;list&gt; [&quot;E09000028&quot;, 67885.2, 64799.06, 65763.3, 6...
+## $ Sutton                 &lt;list&gt; [&quot;E09000029&quot;, 71536.97, 70893.21, 70306.84,...
+## $ `Tower Hamlets`        &lt;list&gt; [&quot;E09000030&quot;, 59865.19, 62318.53, 63938.68,...
+## $ `Waltham Forest`       &lt;list&gt; [&quot;E09000031&quot;, 61319.45, 60252.12, 60871.08,...
+## $ Wandsworth             &lt;list&gt; [&quot;E09000032&quot;, 88559.04, 88641.02, 87124.82,...
+## $ Westminster            &lt;list&gt; [&quot;E09000033&quot;, 133025.3, 131468.3, 132260.3,...
+## $ `Unnamed: 34`          &lt;dbl&gt; NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN,...
+## $ `Inner London`         &lt;list&gt; [&quot;E13000001&quot;, 78251.98, 75885.7, 76591.6, 7...
+## $ `Outer London`         &lt;list&gt; [&quot;E13000002&quot;, 72958.8, 72937.88, 72714.53, ...
+## $ `Unnamed: 37`          &lt;dbl&gt; NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN,...
+## $ `NORTH EAST`           &lt;list&gt; [&quot;E12000001&quot;, 42076.35, 42571.99, 42369.73,...
+## $ `NORTH WEST`           &lt;list&gt; [&quot;E12000002&quot;, 43958.48, 43925.42, 44434.87,...
+## $ `YORKS &amp; THE HUMBER`   &lt;list&gt; [&quot;E12000003&quot;, 44803.43, 44528.81, 45200.47,...
+## $ `EAST MIDLANDS`        &lt;list&gt; [&quot;E12000004&quot;, 45544.52, 46051.57, 45383.82,...
+## $ `WEST MIDLANDS`        &lt;list&gt; [&quot;E12000005&quot;, 48527.52, 49341.29, 49442.18,...
+## $ `EAST OF ENGLAND`      &lt;list&gt; [&quot;E12000006&quot;, 56701.6, 56593.59, 56171.18, ...
+## $ LONDON                 &lt;list&gt; [&quot;E12000007&quot;, 74435.76, 72777.94, 73896.84,...
+## $ `SOUTH EAST`           &lt;list&gt; [&quot;E12000008&quot;, 64018.88, 63715.02, 64113.61,...
+## $ `SOUTH WEST`           &lt;list&gt; [&quot;E12000009&quot;, 54705.16, 54356.15, 53583.08,...
+## $ `Unnamed: 47`          &lt;dbl&gt; NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN,...
+## $ England                &lt;list&gt; [&quot;E92000001&quot;, 53202.77, 53096.15, 53201.28,...</code></pre>
+<pre class="r"><code>properties &lt;- properties %&gt;% rename(Date = `Unnamed: 0`) %&gt;% 
+  select(-c(`Unnamed: 34`, `Unnamed: 37`, `Unnamed: 47`))</code></pre>
+<p>In the code above, the first column is renamed to <code>Date</code> and three columns have been removed by using the negated version of <code>select</code> from <code>dplyr</code>.</p>
+<p>Now the <code>pivot_longer</code> function can be used to make a dataframe of the IDs and the names of the boroughs. The first row contains the IDs of the boroughs.</p>
+<pre class="r"><code>id_df &lt;- pivot_longer(properties[1, 2:46],
+                      cols = everything(),
+                      names_to = &#39;boroughs&#39;,
+                      values_to = &#39;ID&#39;)</code></pre>
+<p>The first row can be removed and the table tidied further by using <code>pivot_longer</code>. Finally <code>inner_join</code> will combine the IDs too from the <code>id_df</code> table created above. As a final step, intermediate dataframes will be removed to optimize memory usage.</p>
+<pre class="r"><code>dfr_tidy &lt;- properties[-1 , ]
+dfr_long &lt;- dfr_tidy %&gt;% pivot_longer(cols = 2:46, 
+                      names_to = &quot;boroughs&quot;, values_to = &#39;avg_price&#39;) %&gt;% 
+  mutate(avg_price = unlist(avg_price))
+
+df &lt;- dfr_long %&gt;% inner_join(x = ., 
+                      y = id_df)</code></pre>
+<pre><code>## Joining, by = &quot;boroughs&quot;</code></pre>
+<pre class="r"><code>rm(dfr_long, dfr_tidy, id_df)</code></pre>
+<p>We also know that some names are not boroughs so those should be removed.</p>
+<pre class="r"><code>non_boroughs &lt;- c(&#39;Inner London&#39;, &#39;Outer London&#39;, 
+               &#39;NORTH EAST&#39;, &#39;NORTH WEST&#39;, &#39;YORKS &amp; THE HUMBER&#39;, 
+               &#39;EAST MIDLANDS&#39;, &#39;WEST MIDLANDS&#39;,
+              &#39;EAST OF ENGLAND&#39;, &#39;LONDON&#39;, &#39;SOUTH EAST&#39;, 
+              &#39;SOUTH WEST&#39;, &#39;England&#39;)
+
+df &lt;- df %&gt;% filter(!boroughs %in% non_boroughs)
+length(unique(df$boroughs))</code></pre>
+<pre><code>## [1] 33</code></pre>
+</div>
+<div id="section-exploratory-data-analysis" class="section level2">
+<h2>Exploratory Data Analysis</h2>
+<p>An interactive chart where the user can select boroughs and plot their average prices over the date range is embedded in an inline shiny application within the Rmarkdown document itself. More information is available <a href="https://bookdown.org/yihui/rmarkdown/shiny-embedded.html#shiny-embed-inline">here</a>.</p>
+<iframe data-deferred-src="appe6d57c0bf9ae9e26571c4a126874d48a/?w=&amp;__subapp__=1" width="100%" height="500" class="shiny-frame shiny-frame-deferred"></iframe>
+<p>Now the year can be extracted to find out the mean price of houses in every borough per year.</p>
+<pre class="r"><code>by_year &lt;- df %&gt;% mutate(Year = year(Date)) %&gt;% 
+  group_by(boroughs, Year) %&gt;% 
+  summarise(across(avg_price, mean))</code></pre>
+<pre><code>## `summarise()` regrouping output by &#39;boroughs&#39; (override with `.groups` argument)</code></pre>
+<p>The goal is to compare the prices of houses in 1995 to what they are in 2019. This can be done with a function or with pipe operators.</p>
+<pre class="r"><code>price_ratio_df &lt;- by_year %&gt;% filter(Year %in% c(1995, 2019)) %&gt;% 
+  group_by(boroughs) %&gt;% 
+  summarise(price_ratio = avg_price[2]/avg_price[1]) %&gt;% 
+  arrange(desc(price_ratio))</code></pre>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<pre class="r"><code>head(price_ratio_df)</code></pre>
+<pre><code>## # A tibble: 6 x 2
+##   boroughs       price_ratio
+##   &lt;chr&gt;                &lt;dbl&gt;
+## 1 Hackney               8.40
+## 2 City of London        7.83
+## 3 Southwark             7.79
+## 4 Lambeth               7.49
+## 5 Westminster           7.17
+## 6 Waltham Forest        7.03</code></pre>
+<p>In the above code, the <code>by_year</code> dataframe is filtered for only the two years of interest, ie. 1995 and 2019. Thereafter grouping is done by the boroughs and then a new variable for the ratio of the average prices in the two years is created.</p>
+<p>A plot of this data can be created using <code>geom_col()</code>. This function will by default plot a horizontal bar chart if the x axis is numerical. A flipped bar chart is a great way of plotting data especially when there are long names to be displayed.</p>
+<pre class="r"><code>price_ratio_df %&gt;% 
+  mutate(boroughs = fct_reorder(boroughs, price_ratio)) %&gt;% 
+  ggplot(aes(price_ratio, boroughs, fill = boroughs)) +
+  geom_col() +
+  theme(legend.position = &#39;none&#39;) +
+  labs(
+    title = &#39;Ratio of Prices - 2019:1995&#39;
+  )</code></pre>
+<p><img src="/post/2020-07-19-plotting-london-boroughs_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+</div>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-172420514-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+  </body>
+</html>
+

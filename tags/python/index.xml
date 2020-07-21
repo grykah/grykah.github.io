@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>python on Hailey Gryka</title>
+    <link>/tags/python/</link>
+    <description>Recent content in python on Hailey Gryka</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 20 Jul 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Plotting London Boroughs</title>
+      <link>/2020/07/20/plotting-london-boroughs/</link>
+      <pubDate>Mon, 20 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/07/20/plotting-london-boroughs/</guid>
+      <description>IntroductionThis Rmarkdown document shows the use of both R and Python for analyzing the London Boroughs dataset. The reticulate library allows us to use Python code in an R environment. This code has been adapted from code by Dhiraj Khanna.
+Load Librarieslibrary(tidyverse)library(reticulate) #To work with pythonlibrary(lubridate) #To deal with date fieldslibrary(shiny)library(scales)theme_set(theme_light())Data IngestionPython script is used to read in the data.</description>
+    </item>
+    
+  </channel>
+</rss>
