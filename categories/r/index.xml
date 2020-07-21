@@ -6,20 +6,20 @@
     <description>Recent content in R on Hailey Gryka</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 23 Jul 2015 21:13:14 -0500</lastBuildDate>
+    <lastBuildDate>Mon, 20 Jul 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/r/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Hello R Markdown</title>
-      <link>/2015/07/23/hello-r-markdown/</link>
-      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
+      <title>Plotting London Boroughs</title>
+      <link>/2020/07/20/plotting-london-boroughs/</link>
+      <pubDate>Mon, 20 Jul 2020 00:00:00 +0000</pubDate>
       
-      <guid>/2015/07/23/hello-r-markdown/</guid>
-      <description>R MarkdownThis is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-You can embed an R code chunk like this:
-summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.</description>
+      <guid>/2020/07/20/plotting-london-boroughs/</guid>
+      <description>IntroductionThis Rmarkdown document shows the use of both R and Python for analyzing the London Boroughs dataset. The reticulate library allows us to use Python code in an R environment. This code is adapted from code by Dhiraj Khanna.
+Load Librarieslibrary(tidyverse)library(reticulate)library(lubridate) #To deal with date fieldslibrary(shiny)library(scales)theme_set(theme_light())Data IngestionPython code is used to read in the data.
+</description>
     </item>
     
   </channel>

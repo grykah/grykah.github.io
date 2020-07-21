@@ -215,7 +215,7 @@ length(unique(df$boroughs))</code></pre>
 <div id="section-exploratory-data-analysis" class="section level2">
 <h2>Exploratory Data Analysis</h2>
 <p>An interactive chart where the user can select boroughs and plot their average prices over the date range is embedded in an inline shiny application within the Rmarkdown document itself. More information is available <a href="https://bookdown.org/yihui/rmarkdown/shiny-embedded.html#shiny-embed-inline">here</a>.</p>
-<iframe data-deferred-src="appe6d57c0bf9ae9e26571c4a126874d48a/?w=&amp;__subapp__=1" width="100%" height="500" class="shiny-frame shiny-frame-deferred"></iframe>
+<iframe data-deferred-src="appb9a855394d0a854b34bf706cc23b3835/?w=&amp;__subapp__=1" width="100%" height="500" class="shiny-frame shiny-frame-deferred"></iframe>
 <p>Now the year can be extracted to find out the mean price of houses in every borough per year.</p>
 <pre class="r"><code>by_year &lt;- df %&gt;% mutate(Year = year(Date)) %&gt;% 
   group_by(boroughs, Year) %&gt;% 
