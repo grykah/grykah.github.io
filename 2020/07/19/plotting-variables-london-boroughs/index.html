@@ -105,8 +105,27 @@ library(rsconnect) #server for shiny widgets</code></pre>
 <pre><code>## The following object is masked from &#39;package:shiny&#39;:
 ## 
 ##     serverInfo</code></pre>
-<pre class="r"><code>#rsconnect::deployApp(&#39;H:\\2020\\Programming\\SampleWork\\x.Website\\HGRYK&#39;)
-library(scales)</code></pre>
+<pre class="r"><code>rsconnect::deployApp(&#39;H:\\2020\\Programming\\SampleWork\\x.Website\\HGRYK&#39;)</code></pre>
+<pre><code>## Preparing to deploy application...DONE
+## Uploading bundle for application: 2618758...</code></pre>
+<pre><code>## Warning in utils::tar(bundlePath, files = &quot;.&quot;, compression = &quot;gzip&quot;, tar = &quot;internal&quot;): storing paths of more than 100 bytes is not portable:
+##   &#39;./grykah.github.io/.Rproj.user/shared/notebooks/81FA9651-2020-07-10-london-boroughs/1/1BCD55F3A828565C/&#39;</code></pre>
+<pre><code>## Warning in utils::tar(bundlePath, files = &quot;.&quot;, compression = &quot;gzip&quot;, tar = &quot;internal&quot;): storing paths of more than 100 bytes is not portable:
+##   &#39;./grykah.github.io/.Rproj.user/shared/notebooks/81FA9651-2020-07-10-london-boroughs/1/1BCD55F3A828565C/chunks.json&#39;</code></pre>
+<pre><code>## DONE
+## Deploying bundle: 3444162 for application: 2618758 ...
+## Waiting for task: 767812912
+##   building: Processing bundle: 3444162
+##   building: Parsing manifest
+##   building: Building image: 3855097
+##   building: Installing packages
+##   building: Installing files
+##   building: Pushing image: 3855097
+##   deploying: Starting instances
+##   rollforward: Activating new instances
+##   terminating: Stopping old instances
+## Application successfully deployed to https://grykah.shinyapps.io/hgryk/</code></pre>
+<pre class="r"><code>library(scales)</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;scales&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:purrr&#39;:
@@ -222,7 +241,26 @@ length(unique(df$boroughs))</code></pre>
 <div id="section-exploratory-data-analysis" class="section level2">
 <h2>Exploratory Data Analysis</h2>
 <p>An interactive chart where the user can select boroughs and plot their average prices over the date range is embedded in an inline shiny application within the Rmarkdown document itself. More information is available <a href="https://bookdown.org/yihui/rmarkdown/shiny-embedded.html#shiny-embed-inline">here</a>.</p>
-<iframe data-deferred-src="appe012557eabd5d035d34394af14d2bde3/?w=&amp;__subapp__=1" width="100%" height="500" class="shiny-frame shiny-frame-deferred"></iframe>
+<pre class="r"><code>ui &lt;- fluidPage(selectInput(&#39;boroughs&#39;, &#39;Select Borough&#39;, choices = levels(as.factor(df$boroughs)), multiple = TRUE, selected = &#39;Camden&#39;),
+
+plotOutput(&#39;price_over_time&#39;)
+  
+server &lt;- function(input, output) {output$price_over_time &lt;- renderPlot({req(input$boroughs)
+  df %&gt;% filter(boroughs %in% input$boroughs) %&gt;% 
+  ggplot(aes(x = Date, y = avg_price, color = boroughs)) +
+  geom_line() +
+  scale_y_continuous(labels = dollar_format(prefix = &#39;£&#39;)) +
+  labs(x = &#39;Time&#39;, y = &#39;Average Price&#39;, color = &#39;Borough&#39;, title = &#39;Average Prices of Houses&#39;,
+       subtitle = &#39;Select boroughs from the drop down option to view and compare prices of houses in different boroughs over a period of time&#39;,
+       caption = &#39;Data obtained from https://data.london.gov.uk/&#39;)
+  })}, options = list(height = 500))
+
+shinyApp(ui = ui, server = server)</code></pre>
+<p><br></p>
+<iframe width="700" height="400" scrolling="no" frameborder="no" src="https://grykah.shinyapps.io/hgryk/?_ga=2.67411601.1454468257.1595872238-1483806229.1595613660">
+</iframe>
+<p>Testing deploy of shiny widget.</p>
+<p><br></p>
 <p>Now the year can be extracted to find out the mean price of houses in every borough per year.</p>
 <pre class="r"><code>by_year &lt;- df %&gt;% mutate(Year = year(Date)) %&gt;% 
   group_by(boroughs, Year) %&gt;% 
@@ -257,22 +295,6 @@ length(unique(df$boroughs))</code></pre>
 <p><img src="/post/2020-07-19-plotting-london-boroughs_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 </div>
 
-
-<div id="disqus_thread"></div>
-<script>
-var disqus_config = function () {
-this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-*/
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://grykah.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
   </article>
 
