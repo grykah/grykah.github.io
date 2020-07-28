@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.74.2" />
+
+
+<title>Use of dataMaid in Data Cleaning - Hailey Gryka</title>
+<meta property="og:title" content="Use of dataMaid in Data Cleaning - Hailey Gryka">
+
+
+  <link href='/logo.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="https://github.com/grykah">GitHub</a></li>
+    
+    <li><a href="https://www.linkedin.com/in/hailey-g-96382a18/">Linked-In</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">10 min read</span>
+    
+
+    <h1 class="article-title">Use of dataMaid in Data Cleaning</h1>
+
+    
+    <span class="article-date">2020-07-27</span>
+    
+
+    <div class="article-content">
+      
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>There are multiple steps to completing a data science project. These steps are enumerated below.</p>
+<ol style="list-style-type: decimal">
+<li>Data Cleaning</li>
+<li>Exploratory Data Analysis</li>
+<li>Data Visualization</li>
+<li>Data Modeling</li>
+<li>Communication of Results</li>
+</ol>
+<p>Herein, we will focus on methods for <code>Data Cleaning</code>. <code>Data Cleaning</code> is of the utmost importance since quality data is essential to making good conclusions from the data. Advantages of cleaning data include:
+- Improving the ability to make informed decisions
+- Save time and increase productivity
+- Minimize risk from predictive analysis later</p>
+<p>While there is not a set workflow for data cleaning, I will proceed by completing Inspection using dataMaid, Cleaning, Verifying, and Reporting. Inspection will allow me to find unexpected or incorrect data. Cleaning will fix the issues identified during inspection. Then, I will re-inspect to verify the cleaning process was sucessful. Finally, I will conclude with by reporting the changes made.</p>
+</div>
+<div id="inspection" class="section level2">
+<h2>Inspection</h2>
+<p>Begin by importing the data, then use the head command to ensure the data is imported.</p>
+<p>To facilitate our work, we’ll load some librarys that will be useful throughout. See the comments for the use of each.</p>
+<pre class="r"><code>library(tidyverse) #subset data, plot</code></pre>
+<pre><code>## -- Attaching packages -------------------------------------------------------------------- tidyverse 1.3.0 --</code></pre>
+<pre><code>## v ggplot2 3.3.2     v purrr   0.3.4
+## v tibble  3.0.3     v dplyr   1.0.1
+## v tidyr   1.1.0     v stringr 1.4.0
+## v readr   1.3.1     v forcats 0.5.0</code></pre>
+<pre><code>## -- Conflicts ----------------------------------------------------------------------- tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>library(reticulate) #for using python 
+library(lubridate) #To deal with date fields</code></pre>
+<pre><code>## 
+## Attaching package: &#39;lubridate&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     date, intersect, setdiff, union</code></pre>
+<pre class="r"><code>library(shiny) #to make interactive widgets
+library(scales) #scaling plots</code></pre>
+<pre><code>## 
+## Attaching package: &#39;scales&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     discard</code></pre>
+<pre><code>## The following object is masked from &#39;package:readr&#39;:
+## 
+##     col_factor</code></pre>
+<pre class="r"><code>#library(devtools)
+library(easyGgplot2)</code></pre>
+<p>Also, import a few python packages that will be of use.</p>
+<pre class="python"><code>import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt</code></pre>
+<p>One option for importing the data is through R using <code>read_csv</code> from <code>readr</code>.</p>
+<pre class="r"><code>library(readr)
+zika_r &lt;- read_csv(&quot;https://raw.githubusercontent.com/BuzzFeedNews/zika-data/master/data/raw/paho-who/paho-who-cases-reported-latest.csv&quot;)</code></pre>
+<pre><code>## Warning: Duplicated column names deduplicated: &#39;Country / territory&#39; =&gt;
+## &#39;Country / territory_1&#39; [6]</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   `Country / territory` = col_character(),
+##   `Measure Names` = col_character(),
+##   `Month of Date` = col_character(),
+##   `Report Epi Week` = col_double(),
+##   `Year of Date` = col_double(),
+##   `Country / territory_1` = col_character(),
+##   Date = col_character(),
+##   `Measure Values` = col_number(),
+##   `Laboratory confirmed cases` = col_double(),
+##   `Suspected cases` = col_number()
+## )</code></pre>
+<pre class="r"><code>head(zika_r)</code></pre>
+<pre><code>## # A tibble: 6 x 10
+##   `Country / terr~ `Measure Names` `Month of Date` `Report Epi Wee~
+##   &lt;chr&gt;            &lt;chr&gt;           &lt;chr&gt;                      &lt;dbl&gt;
+## 1 Aruba            Suspected       January                        1
+## 2 Aruba            Confirmed       January                        1
+## 3 Aruba            Suspected       January                        2
+## 4 Aruba            Confirmed       January                        2
+## 5 Aruba            Suspected       January                        3
+## 6 Aruba            Confirmed       January                        3
+## # ... with 6 more variables: `Year of Date` &lt;dbl&gt;, `Country /
+## #   territory_1` &lt;chr&gt;, Date &lt;chr&gt;, `Measure Values` &lt;dbl&gt;, `Laboratory
+## #   confirmed cases` &lt;dbl&gt;, `Suspected cases` &lt;dbl&gt;</code></pre>
+<p>An alternate, more flexible option, is to import the data through python using <code>read_csv</code> from <code>pandas</code>. This option also has a cleaner immediate output.</p>
+<pre class="python"><code>zika_data = pd.read_csv(&quot;https://raw.githubusercontent.com/BuzzFeedNews/zika-data/master/data/raw/paho-who/paho-who-cases-reported-latest.csv&quot;)
+zika_data.head()</code></pre>
+<pre><code>##   Country / territory Measure Names  ... Laboratory confirmed cases  Suspected cases
+## 0               Aruba     Suspected  ...                          0                0
+## 1               Aruba    Confirmed   ...                          0                0
+## 2               Aruba     Suspected  ...                          0                0
+## 3               Aruba    Confirmed   ...                          0                0
+## 4               Aruba     Suspected  ...                          0                0
+## 
+## [5 rows x 10 columns]</code></pre>
+<p>To inspect the data more throughly in R, the <code>dataMaid</code> package will be used. Prior to utilizing this package, let’s make sure we are always using the same data by importing the python dataframe into R with the same name. The <code>dataMaid</code> package is meant for creating reports on data cleanliness. A single variable can be specified or the entire dataframe can be specified for inspection.</p>
+<pre class="r"><code>library(&#39;dataMaid&#39;)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;dataMaid&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
+## 
+##     summarize</code></pre>
+<pre class="r"><code>zika_data &lt;- py$zika_data
+
+check(zika_data$`Suspected cases`) #check single variable</code></pre>
+<pre><code>## $identifyMissing
+## No problems found.
+## $identifyWhitespace
+## No problems found.
+## $identifyLoners
+## Note that the following levels have at most five observations: 1, 1,046, 1,064, 1,065, 1,069, 1,119, 1,231, 1,310, 1,363, 1,436 (76 additional values omitted).
+## $identifyCaseIssues
+## No problems found.
+## $identifyNums
+## No problems found.</code></pre>
+<pre class="r"><code>check(zika_data) #check all variables </code></pre>
+<pre><code>## $`Country / territory`
+## $`Country / territory`$identifyMissing
+## No problems found.
+## $`Country / territory`$identifyWhitespace
+## No problems found.
+## $`Country / territory`$identifyLoners
+## No problems found.
+## $`Country / territory`$identifyCaseIssues
+## No problems found.
+## $`Country / territory`$identifyNums
+## No problems found.
+## 
+## $`Measure Names`
+## $`Measure Names`$identifyMissing
+## No problems found.
+## $`Measure Names`$identifyWhitespace
+## The following values appear with prefixed or suffixed white space: Confirmed .
+## $`Measure Names`$identifyLoners
+## No problems found.
+## $`Measure Names`$identifyCaseIssues
+## No problems found.
+## $`Measure Names`$identifyNums
+## No problems found.
+## 
+## $`Month of Date`
+## $`Month of Date`$identifyMissing
+## No problems found.
+## $`Month of Date`$identifyWhitespace
+## No problems found.
+## $`Month of Date`$identifyLoners
+## Note that the following levels have at most five observations: July, May.
+## $`Month of Date`$identifyCaseIssues
+## No problems found.
+## $`Month of Date`$identifyNums
+## No problems found.
+## 
+## $`Report Epi Week`
+## $`Report Epi Week`$identifyMissing
+## No problems found.
+## $`Report Epi Week`$identifyOutliers
+## Note that the following possible outlier values were detected: 52.
+## 
+## $`Year of Date`
+## $`Year of Date`$identifyMissing
+## No problems found.
+## $`Year of Date`$identifyOutliers
+## No problems found.
+## 
+## $`Country / territory.1`
+## $`Country / territory.1`$identifyMissing
+## No problems found.
+## $`Country / territory.1`$identifyWhitespace
+## No problems found.
+## $`Country / territory.1`$identifyLoners
+## No problems found.
+## $`Country / territory.1`$identifyCaseIssues
+## No problems found.
+## $`Country / territory.1`$identifyNums
+## No problems found.
+## 
+## $Date
+## $Date$identifyMissing
+## No problems found.
+## $Date$identifyWhitespace
+## No problems found.
+## $Date$identifyLoners
+## Note that the following levels have at most five observations: July, 2015, May, 2015.
+## $Date$identifyCaseIssues
+## No problems found.
+## $Date$identifyNums
+## No problems found.
+## 
+## $`Measure Values`
+## $`Measure Values`$identifyMissing
+## The following suspected missing value codes enter as regular values: 8, 9.
+## $`Measure Values`$identifyWhitespace
+## No problems found.
+## $`Measure Values`$identifyLoners
+## Note that the following levels have at most five observations: 1,046, 1,064, 1,065, 1,069, 1,119, 1,231, 1,310, 1,363, 1,436, 1,451 (98 additional values omitted).
+## $`Measure Values`$identifyCaseIssues
+## No problems found.
+## $`Measure Values`$identifyNums
+## No problems found.
+## 
+## $`Laboratory confirmed cases`
+## $`Laboratory confirmed cases`$identifyMissing
+## No problems found.
+## $`Laboratory confirmed cases`$identifyOutliers
+## Note that the following possible outlier values were detected: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 (31 additional values omitted).
+## 
+## $`Suspected cases`
+## $`Suspected cases`$identifyMissing
+## No problems found.
+## $`Suspected cases`$identifyWhitespace
+## No problems found.
+## $`Suspected cases`$identifyLoners
+## Note that the following levels have at most five observations: 1, 1,046, 1,064, 1,065, 1,069, 1,119, 1,231, 1,310, 1,363, 1,436 (76 additional values omitted).
+## $`Suspected cases`$identifyCaseIssues
+## No problems found.
+## $`Suspected cases`$identifyNums
+## No problems found.</code></pre>
+<pre class="r"><code>#makeDataReport(zika_data, replace = TRUE) #alternately, a pdf report can be created through LaTex</code></pre>
+<p>We can see that dataMaid is telling us that many of the checks have no problems! This is great. Let’s consider some of the variables that do have some issues. Since Measure Values provides us with the same information as the columns Suspected Cases and Lab Confirmed Cases, we can remove the two columns and utilize a filter for further analysis. This simplifies the information and removes the duplicate values seen in these two columns. Similarly, we can also remove the Date column since this information is contained in other columns and will be easier to use in the parsed out form. Finally, the column Country/territory1 is a duplicate of Country/territory, so that can also be removed. This eliminates many of the errors.</p>
+<p>The remaining errors in Measure Values, Month of Date, and Report Epi Week are suspected Loner, Outlier, or Missing Values and should be considered more closely. Measure Names has a white space space error. We should consider fixing this or at least recall this if we filter by this variable to ensure consistency.</p>
+<pre class="r"><code>summary(zika_data$`Measure Values`)</code></pre>
+<pre><code>##    Length     Class      Mode 
+##      1216 character character</code></pre>
+<pre class="r"><code>unique(zika_data$`Month of Date`)</code></pre>
+<pre><code>## [1] &quot;January&quot;  &quot;February&quot; &quot;March&quot;    &quot;May&quot;      &quot;July&quot;     &quot;October&quot;  &quot;November&quot;
+## [8] &quot;December&quot;</code></pre>
+<pre class="r"><code>summary(zika_data$`Report Epi Week`)</code></pre>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    1.00    5.00   43.00   31.76   48.00   52.00</code></pre>
+<p>By starting to investigate the data more thoroughly, we immediately find that Measure Values is the wrong type (it is type character and should be type numerical). We also find that there is not data for the months of April, June, August, or September. Finally, we see that the weeks reported make since because the max number of weeks is 52 (the number of weeks in a year).</p>
+<p>Thus, we need to change Measure Values to a numeric. We do not need to change anything for the Month of Date, but we should keep this in mind for visualization. Since not all months are represented, we may want to visualize by week or some alternate way.</p>
+</div>
+<div id="cleaning" class="section level2">
+<h2>Cleaning</h2>
+<p>Let’s start by removing the columns that we identified as repetative or unnecessary information.</p>
+<pre class="r"><code>drop &lt;- c(&quot;Date&quot;, &quot;Suspected cases&quot;, &quot;Laboratory confirmed cases&quot;, &quot;Country / territory.1&quot;)
+df_zika = zika_data[,!(names(zika_data) %in% drop)]</code></pre>
+<p>Next we will change Measure Values to a numeric.</p>
+<pre class="r"><code>df_zika$&#39;Measure Values&#39; &lt;- as.numeric(gsub(&quot;,&quot;,&quot;&quot;,df_zika$&#39;Measure Values&#39;))</code></pre>
+<p>Finally, let’s remove the white space from Measure Names to ensure that they can be filtered consistently, if needed..</p>
+<pre class="r"><code>df_zika$`Measure Names` &lt;- trimws(df_zika$`Measure Names`)</code></pre>
+<p>Let’s also remove the white space from the column names so they are easier to call.</p>
+<pre class="r"><code>colnames(df_zika) &lt;- c(&quot;Country/territory&quot;, &quot;MeasureNames&quot;, &quot;Month&quot;, &quot;ReportEpiWeek&quot;, &quot;Year&quot;, &quot;MeasureValues&quot;)</code></pre>
+</div>
+<div id="verifying" class="section level2">
+<h2>Verifying</h2>
+<p>After completing the cleaning steps above, let’s varify that things went as expected. We will check the columns present, ensure that Measure Values is a numeric, and check for whitespace in Measure Names and columns.</p>
+<pre class="r"><code>names(df_zika) </code></pre>
+<pre><code>## [1] &quot;Country/territory&quot; &quot;MeasureNames&quot;      &quot;Month&quot;            
+## [4] &quot;ReportEpiWeek&quot;     &quot;Year&quot;              &quot;MeasureValues&quot;</code></pre>
+<pre class="r"><code>summary(df_zika$`MeasureValues`)</code></pre>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    0.00    0.00    0.00   62.97    0.00 5737.00</code></pre>
+<pre class="r"><code>check(df_zika$`MeasureNames`)</code></pre>
+<pre><code>## $identifyMissing
+## No problems found.
+## $identifyWhitespace
+## No problems found.
+## $identifyLoners
+## No problems found.
+## $identifyCaseIssues
+## No problems found.
+## $identifyNums
+## No problems found.</code></pre>
+<p>These results show the columns we expect in the dataframe. While Measure Values has a strange statistical spread, this would be expected due to the potential for exponential spread of a virus in a short period of time (i.e. outliers should be expected). Also, there is no white space in Measure Names. Thus, we have made our desired changes to the dataframe.</p>
+<p>In this case, the changes that were needed were fairly simple and we quickly removed columns that provided duplicate information and changed the type of other data. In more complex data there might be more to do or we might find other values that need to be replaced/corrected/modified once we complete our first iteration of Cleaning and Verifying. Thus, the Cleaning and Verifying steps may require multiple iterations in order to complete the cleaning of the dataframe.</p>
+</div>
+<div id="reporting" class="section level2">
+<h2>Reporting</h2>
+<p>We have completed the cleaning and verification of our zika dataset using dataMaid to guide the process. The updated dataset does not have columns that provide duplicative information, is confirmed to have all it’s values, and the values are of the correct type. This dataframe is ready for Exploratory Data Analysis.</p>
+<p>A quick visualization of this data is benefical as a final check of the data and for presenting the data at various phases of analysis. Below are hitograms of cases by week of confirmed and suspected cases of Zika.</p>
+<pre class="r"><code># Default value of position is &quot;identity&quot;
+ggplot2.histogram(data=df_zika, xName=&#39;MeasureValues&#39;,
+        groupName=&quot;MeasureNames&quot;, legendPosition=&quot;top&quot;,
+        alpha=0.5, position=&quot;dodge&quot;) #position = identity, dodge, or stack</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="/post/2020-07-27-dataMaid-Data-Cleaning_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+</div>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-172420514-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+  </body>
+</html>
+
