@@ -17,7 +17,7 @@
       <pubDate>Tue, 04 Aug 2020 00:00:00 +0000</pubDate>
       
       <guid>/2020/08/04/eda/</guid>
-      <description>df = pd.read_csv(&amp;quot;H:/2020/Programming/SampleWork/PsampleWork/insurance.csv&amp;quot;)print(df.shape)## (1338, 7)df.info()## &amp;lt;class &amp;#39;pandas.core.frame.DataFrame&amp;#39;&amp;gt;## RangeIndex: 1338 entries, 0 to 1337## Data columns (total 7 columns):## # Column Non-Null Count Dtype ## --- ------ -------------- ----- ## 0 age 1338 non-null int64 ## 1 sex 1338 non-null object ## 2 bmi 1338 non-null float64## 3 children 1338 non-null int64 ## 4 smoker 1338 non-null object ## 5 region 1338 non-null object ## 6 charges 1338 non-null float64## dtypes: float64(2), int64(2), object(3)## memory usage: 73.</description>
+      <description>Exploratory Data Analysis (EDA) is an essential step in any data science project. This step allows us to remove unuseful/incorrect data, understand the relationships within the data, and provides context required to develop models that will ultimately allow for accurte interpretation of results. EDA can be a time consuming process and this step will have to be revisited if shortcuts are taken. However, pandas-profiling is an extremely powerful python package that can help with this process.</description>
     </item>
     
   </channel>

@@ -62,7 +62,7 @@
 
   <article class="article">
     
-    <span class="article-duration">1 min read</span>
+    <span class="article-duration">2 min read</span>
     
 
     <h1 class="article-title">Exploratory Data Analysis using Pandas Profiling</h1>
@@ -76,6 +76,10 @@
 <script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 
+<p>Exploratory Data Analysis (EDA) is an essential step in any data science project. This step allows us to remove unuseful/incorrect data, understand the relationships within the data, and provides context required to develop models that will ultimately allow for accurte interpretation of results. EDA can be a time consuming process and this step will have to be revisited if shortcuts are taken. However, pandas-profiling is an extremely powerful python package that can help with this process.</p>
+<p>Herein we will look at an example and the few short lines required to generate loads of exploration in a cleanly formated report.</p>
+<p>[Here]<a href="https://pypi.org/project/pandas-profiling/" class="uri">https://pypi.org/project/pandas-profiling/</a> is a link to the pandas-profiling project page for more information on the package.</p>
+<p>The dataset I have used is about the cost of insurance and variables that may contribute to the cost. This dataset is available on [Kaggle]<a href="https://www.kaggle.com/annetxu/notebook" class="uri">https://www.kaggle.com/annetxu/notebook</a> .</p>
 <pre class="python"><code>df = pd.read_csv(&quot;H:/2020/Programming/SampleWork/PsampleWork/insurance.csv&quot;)
 print(df.shape)</code></pre>
 <pre><code>## (1338, 7)</code></pre>
@@ -102,7 +106,7 @@ print(df.shape)</code></pre>
 ## 3   33    male  22.705         0     no  northwest  21984.47061
 ## 4   32    male  28.880         0     no  northwest   3866.85520</code></pre>
 <p><br></p>
-<iframe width="700" height="400" scrolling="no" frameborder="no" src="http://localhost:8890/view/JNote/profileOutput.html">
+<iframe width="700" height="400" scrolling="no" frameborder="no" src="https://grykah.github.io/2020/08/04/eda/profileOutput.html">
 </iframe>
 <p><br></p>
 
