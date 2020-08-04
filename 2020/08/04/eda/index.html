@@ -62,7 +62,7 @@
 
   <article class="article">
     
-    <span class="article-duration">2 min read</span>
+    <span class="article-duration">3 min read</span>
     
 
     <h1 class="article-title">Exploratory Data Analysis using Pandas Profiling</h1>
@@ -78,10 +78,10 @@
 
 <p>Exploratory Data Analysis (EDA) is an essential step in any data science project. This step allows us to remove unuseful/incorrect data, understand the relationships within the data, and provides context required to develop models that will ultimately allow for accurte interpretation of results. EDA can be a time consuming process and this step will have to be revisited if shortcuts are taken. However, pandas-profiling is an extremely powerful python package that can help with this process.</p>
 <p>Herein we will look at an example and the few short lines required to generate loads of exploration in a cleanly formated report.</p>
-<p>[Here]<a href="https://pypi.org/project/pandas-profiling/" class="uri">https://pypi.org/project/pandas-profiling/</a> is a link to the pandas-profiling project page for more information on the package.</p>
-<p>The dataset I have used is about the cost of insurance and variables that may contribute to the cost. This dataset is available on [Kaggle]<a href="https://www.kaggle.com/annetxu/notebook" class="uri">https://www.kaggle.com/annetxu/notebook</a> .</p>
+<p><a href="https://pypi.org/project/pandas-profiling/">Here</a> is a link to the pandas-profiling project page for more information on the package.</p>
+<p>The dataset I have used is about the cost of insurance and variables that may contribute to the cost. This dataset is available on <a href="https://www.kaggle.com/annetxu/notebook">Kaggle</a>. As we get started, let’s get a bit of information about the dataframe we will be working with, including it’s shape, info, and head values.</p>
 <pre class="python"><code>df = pd.read_csv(&quot;H:/2020/Programming/SampleWork/PsampleWork/insurance.csv&quot;)
-print(df.shape)</code></pre>
+df.shape</code></pre>
 <pre><code>## (1338, 7)</code></pre>
 <pre class="python"><code>df.info()</code></pre>
 <pre><code>## &lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
@@ -98,17 +98,23 @@ print(df.shape)</code></pre>
 ##  6   charges   1338 non-null   float64
 ## dtypes: float64(2), int64(2), object(3)
 ## memory usage: 73.3+ KB</code></pre>
-<pre class="python"><code>df.head()</code></pre>
-<pre><code>##    age     sex     bmi  children smoker     region      charges
-## 0   19  female  27.900         0    yes  southwest  16884.92400
-## 1   18    male  33.770         1     no  southeast   1725.55230
-## 2   28    male  33.000         3     no  southeast   4449.46200
-## 3   33    male  22.705         0     no  northwest  21984.47061
-## 4   32    male  28.880         0     no  northwest   3866.85520</code></pre>
+<pre class="python"><code>df.sample(3)</code></pre>
+<pre><code>##       age     sex     bmi  children smoker     region      charges
+## 724    50  female  27.075         1     no  northeast  10106.13425
+## 988    34    male  34.675         0     no  northeast   4518.82625
+## 1052   49    male  29.830         1     no  northeast   9288.02670</code></pre>
+<p>These quick calls on the dataframe gave us a bit of information that is helpful moving forward. We know the how many rows and columns are present, which is of particular interest since a limitation of the pandas-profiling package is the amount of time and memory it requires to run, particularly on large datasets. We also know the column names and their type. With this information, we know which methods the describe call would help us with and which columns we should handle as categories, however, this would require more lines of code! Finally, the sample call gives us a better idea of what the data will actually look like which is important for making decisions about how to cleaning, and later model, the data.</p>
+<p>This is all freat information to have and could guide us as we start EDA. There are still many things we need to learn about the data though. For example: is there duplicate data; does the data contain duplicates or missing values; how do the variables relate to one another? Each of these questions dictate how we will handle cleaning, further exploration, and modeling the data to make the best predictions possible. They also require a lot more code to answer! This is where the magic of pandas profiling comes in. In one line of code we can generate a report that answers all of these questions, and more, so we can make efficient use of our EDA time.</p>
+<pre class="python"><code>profile = ProfileReport(df, title=&quot;Pandas Profiling Report&quot;)</code></pre>
 <p><br></p>
-<iframe width="700" height="400" scrolling="no" frameborder="no" src="https://grykah.github.io/2020/08/04/eda/profileOutput.html">
+<iframe width="700" height="1200" scrolling="yes" frameborder="no" src="https://grykah.github.io/2020/08/04/eda/profileOutput.html">
 </iframe>
 <p><br></p>
+<p>The pandas profiling package offers a huge amount of information with very little effort. But, there’s more than we’ve looked at here! Some things to try out include: an even deeper dive into your data by using <code>explorative</code>, create <code>widgets</code> or <code>iframes</code> with the information in your report, or deal with large datasets using <code>minimal</code>.</p>
+<pre class="python"><code>profile = ProfileReport(df, title=&quot;Pandas Profiling Report&quot;, explorative=True)  #deeper dive into the data
+profile.to_widgets() #creates a widget containing all of the report information
+profile.to_notebook_iframe() #creates an iframe containing all of the report information
+profile = ProfileReport(huge_df, title=&quot;Pandas Profiling Report&quot;, minimal=True)</code></pre>
 
     </div>
   </article>
