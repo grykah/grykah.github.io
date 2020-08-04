@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.74.2" />
+
+
+<title>Exploratory Data Analysis using Pandas Profiling - Hailey Gryka</title>
+<meta property="og:title" content="Exploratory Data Analysis using Pandas Profiling - Hailey Gryka">
+
+
+  <link href='/logo.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="https://github.com/grykah">GitHub</a></li>
+    
+    <li><a href="https://www.linkedin.com/in/hailey-g-96382a18/">Linked-In</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">1 min read</span>
+    
+
+    <h1 class="article-title">Exploratory Data Analysis using Pandas Profiling</h1>
+
+    
+    <span class="article-date">2020-08-04</span>
+    
+
+    <div class="article-content">
+      
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<pre class="python"><code>df = pd.read_csv(&quot;H:/2020/Programming/SampleWork/PsampleWork/insurance.csv&quot;)
+print(df.shape)</code></pre>
+<pre><code>## (1338, 7)</code></pre>
+<pre class="python"><code>df.info()</code></pre>
+<pre><code>## &lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+## RangeIndex: 1338 entries, 0 to 1337
+## Data columns (total 7 columns):
+##  #   Column    Non-Null Count  Dtype  
+## ---  ------    --------------  -----  
+##  0   age       1338 non-null   int64  
+##  1   sex       1338 non-null   object 
+##  2   bmi       1338 non-null   float64
+##  3   children  1338 non-null   int64  
+##  4   smoker    1338 non-null   object 
+##  5   region    1338 non-null   object 
+##  6   charges   1338 non-null   float64
+## dtypes: float64(2), int64(2), object(3)
+## memory usage: 73.3+ KB</code></pre>
+<pre class="python"><code>df.head()</code></pre>
+<pre><code>##    age     sex     bmi  children smoker     region      charges
+## 0   19  female  27.900         0    yes  southwest  16884.92400
+## 1   18    male  33.770         1     no  southeast   1725.55230
+## 2   28    male  33.000         3     no  southeast   4449.46200
+## 3   33    male  22.705         0     no  northwest  21984.47061
+## 4   32    male  28.880         0     no  northwest   3866.85520</code></pre>
+<p><br></p>
+<iframe width="700" height="400" scrolling="no" frameborder="no" src="http://localhost:8890/view/JNote/profileOutput.html">
+</iframe>
+<p><br></p>
+
+    </div>
+  </article>
+
+  
+<section id="comments">
+  <div id="disqus_thread"></div>
+  <script>
+  var disqus_config = function () {
+  
+  };
+  (function() {
+    var inIFrame = function() {
+      var iframe = true;
+      try { iframe = window.self !== window.top; } catch (e) {}
+      return iframe;
+    };
+    if (inIFrame()) return;
+    var d = document, s = d.createElement('script');
+    s.src = '//grykah.disqus.com/embed.js'; s.async = true;
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-172420514-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+  </body>
+</html>
+

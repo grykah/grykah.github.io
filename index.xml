@@ -6,10 +6,19 @@
     <description>Recent content on Hailey Gryka</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 27 Jul 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 04 Aug 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Exploratory Data Analysis using Pandas Profiling</title>
+      <link>/2020/08/04/eda/</link>
+      <pubDate>Tue, 04 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/08/04/eda/</guid>
+      <description>df = pd.read_csv(&amp;quot;H:/2020/Programming/SampleWork/PsampleWork/insurance.csv&amp;quot;)print(df.shape)## (1338, 7)df.info()## &amp;lt;class &amp;#39;pandas.core.frame.DataFrame&amp;#39;&amp;gt;## RangeIndex: 1338 entries, 0 to 1337## Data columns (total 7 columns):## # Column Non-Null Count Dtype ## --- ------ -------------- ----- ## 0 age 1338 non-null int64 ## 1 sex 1338 non-null object ## 2 bmi 1338 non-null float64## 3 children 1338 non-null int64 ## 4 smoker 1338 non-null object ## 5 region 1338 non-null object ## 6 charges 1338 non-null float64## dtypes: float64(2), int64(2), object(3)## memory usage: 73.</description>
+    </item>
     
     <item>
       <title>Use of dataMaid in Data Cleaning</title>
@@ -28,7 +37,7 @@ Data CleaningExploratory Data AnalysisData VisualizationData ModelingCommuni
       
       <guid>/2020/07/19/plotting-variables-london-boroughs/</guid>
       <description>IntroductionThis Rmarkdown document shows the use of both R and Python for analyzing the London Boroughs dataset. The reticulate library allows us to use Python code in an R environment.
-Load Librarieslibrary(tidyverse)## -- Attaching packages ------------------------------------------------------------------ tidyverse 1.3.0 --## v ggplot2 3.3.2 v purrr 0.3.4## v tibble 3.0.3 v dplyr 1.0.1## v tidyr 1.1.0 v stringr 1.4.0## v readr 1.3.1 v forcats 0.</description>
+Load Librarieslibrary(tidyverse)## -- Attaching packages ------------------------------------------------------------------------------------------------------------- tidyverse 1.3.0 --## v ggplot2 3.3.2 v purrr 0.3.4## v tibble 3.0.3 v dplyr 1.0.1## v tidyr 1.1.0 v stringr 1.4.0## v readr 1.3.1 v forcats 0.</description>
     </item>
     
     <item>

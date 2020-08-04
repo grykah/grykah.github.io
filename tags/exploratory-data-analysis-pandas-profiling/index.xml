@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>-Exploratory Data Analysis -Pandas Profiling on Hailey Gryka</title>
+    <link>/tags/exploratory-data-analysis-pandas-profiling/</link>
+    <description>Recent content in -Exploratory Data Analysis -Pandas Profiling on Hailey Gryka</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 04 Aug 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/exploratory-data-analysis-pandas-profiling/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Exploratory Data Analysis using Pandas Profiling</title>
+      <link>/2020/08/04/london-boroughs/</link>
+      <pubDate>Tue, 04 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/08/04/london-boroughs/</guid>
+      <description>Insurance Data Exploration Begin the data exploration by importing essential libraries and the data.
+import pandas as pd import pandas_profiling as pp df = pd.read_csv(&amp;#34;H:/2020/Programming/SampleWork/PsampleWork/insurance.csv&amp;#34;) print(df.shape) df.info() df.head() (1338, 7)&amp;lt;class &#39;pandas.core.frame.DataFrame&#39;&amp;gt;RangeIndex: 1338 entries, 0 to 1337Data columns (total 7 columns):# Column Non-Null Count Dtype --- ------ -------------- ----- 0 age 1338 non-null int64 1 sex 1338 non-null object 2 bmi 1338 non-null float643 children 1338 non-null int64 4 smoker 1338 non-null object 5 region 1338 non-null object 6 charges 1338 non-null float64dtypes: float64(2), int64(2), object(3)memory usage: 73.</description>
+    </item>
+    
+  </channel>
+</rss>
