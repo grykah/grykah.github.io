@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.74.2" />
+
+
+<title>COVID-19 Data Monitoring - Hailey Gryka</title>
+<meta property="og:title" content="COVID-19 Data Monitoring - Hailey Gryka">
+
+
+  <link href='/logo.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="https://github.com/grykah">GitHub</a></li>
+    
+    <li><a href="https://www.linkedin.com/in/hailey-g-96382a18/">Linked-In</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">1 min read</span>
+    
+
+    <h1 class="article-title">COVID-19 Data Monitoring</h1>
+
+    
+    <span class="article-date">2020-08-11</span>
+    
+
+    <div class="article-content">
+      
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<p>I recently began a project utilizing the incidence of COVID-19 in relation to other variables. In order to ensure my data is updated frequently enough, I wanted to have a method of monitoring COVID-19, real time, to see when any major changes occur. In order to achieve this, I built an interactive shiny app to monitor the data.</p>
+<p>To build my shiny app, I am defining inputs as follows:
+* country: the name of the country
+* type: the type of case (i.e. confirmed, tested, recovered)
+* level: granularity of the occurance (i.e. country, region, state)
+* date: range of data</p>
+<p><br></p>
+<iframe width="700" height="400" scrolling="no" frameborder="no" src="https://grykah.shinyapps.io/covid19app/?_ga=2.133409485.2147027597.1597120529-1483806229.1595613660">
+</iframe>
+<p><br></p>
+<p>I now have a simple shiny application with interactive abilities so I can view data of interest to my project and update the data in my project as needed. For clear examination of the data, I can choose specific locations of interest, alter the granularity of the location(s), and choose the type of COVID-19 cases I am interested in, all over a specifiable date range.</p>
+
+    </div>
+  </article>
+
+  
+<section id="comments">
+  <div id="disqus_thread"></div>
+  <script>
+  var disqus_config = function () {
+  
+  };
+  (function() {
+    var inIFrame = function() {
+      var iframe = true;
+      try { iframe = window.self !== window.top; } catch (e) {}
+      return iframe;
+    };
+    if (inIFrame()) return;
+    var d = document, s = d.createElement('script');
+    s.src = '//grykah.disqus.com/embed.js'; s.async = true;
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+    
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-172420514-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+  </body>
+</html>
+
