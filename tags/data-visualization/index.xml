@@ -6,20 +6,19 @@
     <description>Recent content in data visualization on Hailey Gryka</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 20 Jul 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 16 Aug 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/data-visualization/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Plotting London Boroughs</title>
-      <link>/2020/07/20/plotting-london-boroughs/</link>
-      <pubDate>Mon, 20 Jul 2020 00:00:00 +0000</pubDate>
+      <title>Beautiful R Plots</title>
+      <link>/2020/08/16/beautiful-r-plots/</link>
+      <pubDate>Sun, 16 Aug 2020 00:00:00 +0000</pubDate>
       
-      <guid>/2020/07/20/plotting-london-boroughs/</guid>
-      <description>IntroductionThis Rmarkdown document shows the use of both R and Python for analyzing the London Boroughs dataset. The reticulate library allows us to use Python code in an R environment. This code is adapted from code by Dhiraj Khanna.
-Load Librarieslibrary(tidyverse)library(reticulate)library(lubridate) #To deal with date fieldslibrary(shiny)library(scales)theme_set(theme_light())Data IngestionPython code is used to read in the data.
-</description>
+      <guid>/2020/08/16/beautiful-r-plots/</guid>
+      <description>The R language is fantastic for quickly turning data into plots, however, it is not commonly used for creating visual aids for presentation or publication figures. While it is more common to produce final figures with other software, the same quality figures can be created in R.
+Herein I show several examples of plots, that I have re-created using R, in an aesthetically similar manner. In each example, I provide the original figure and then the R-code I used for replication, followed by the replicate figure.</description>
     </item>
     
   </channel>

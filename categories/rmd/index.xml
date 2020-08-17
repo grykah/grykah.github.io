@@ -6,10 +6,20 @@
     <description>Recent content in Rmd on Hailey Gryka</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 11 Aug 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 16 Aug 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/rmd/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Beautiful R Plots</title>
+      <link>/2020/08/16/beautiful-r-plots/</link>
+      <pubDate>Sun, 16 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/08/16/beautiful-r-plots/</guid>
+      <description>The R language is fantastic for quickly turning data into plots, however, it is not commonly used for creating visual aids for presentation or publication figures. While it is more common to produce final figures with other software, the same quality figures can be created in R.
+Herein I show several examples of plots, that I have re-created using R, in an aesthetically similar manner. In each example, I provide the original figure and then the R-code I used for replication, followed by the replicate figure.</description>
+    </item>
     
     <item>
       <title>COVID-19 Data Monitoring</title>
@@ -37,7 +47,8 @@ To build my shiny app, I am defining inputs as follows:* country: the name of t
       
       <guid>/2020/07/19/plotting-variables-london-boroughs/</guid>
       <description>IntroductionThis Rmarkdown document shows the use of both R and Python for analyzing the London Boroughs dataset. The reticulate library allows us to use Python code in an R environment.
-Load Librarieslibrary(tidyverse)## -- Attaching packages ------------------------------------------------------------------------------------------------------------- tidyverse 1.3.0 --## v ggplot2 3.3.2 v purrr 0.3.4## v tibble 3.0.3 v dplyr 1.0.1## v tidyr 1.1.0 v stringr 1.4.0## v readr 1.3.1 v forcats 0.</description>
+Load LibrariesData IngestionWe can use Python code to read in the data.
+import pandas as pdimport numpy as npimport matplotlib.pyplot as plturl_LondonHousePrices = &amp;quot;https://data.london.gov.uk/download/uk-house-price-index/70ac0766-8902-4eb5-aab5-01951aaed773/UK%20House%20price%20index.xls&amp;quot;properties = pd.read_excel(url_LondonHousePrices, sheet_name=&amp;#39;Average price&amp;#39;, index_col= None)properties.</description>
     </item>
     
   </channel>
