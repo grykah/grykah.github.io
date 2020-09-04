@@ -37,7 +37,7 @@ To build my shiny app, I am defining inputs as follows:* country: the name of t
       <pubDate>Tue, 04 Aug 2020 00:00:00 +0000</pubDate>
       
       <guid>/2020/08/04/eda/</guid>
-      <description>Exploratory Data Analysis (EDA) is an essential step in any data science project. This step allows us to remove unuseful/incorrect data, understand the relationships within the data, and provides context required to develop models that will ultimately allow for accurte interpretation of results. EDA can be a time consuming process and this step will have to be revisited if shortcuts are taken. However, pandas-profiling is an extremely powerful python package that can help with this process.</description>
+      <description>Exploratory Data Analysis (EDA) is an essential step in any data science project. This step allows us to remove unuseful/incorrect data, understand the relationships within the data, and provides context required to develop models that will ultimately allow for accurate interpretation of results. EDA can be a time consuming process and if shortcuts are taken, it will hurt the analysis in the long run. However, pandas-profiling is an extremely powerful python package that can help with this process.</description>
     </item>
     
     <item>
@@ -81,12 +81,31 @@ Please feel free to reach out to me with any questions or comments!</description
     </item>
     
     <item>
+      <title>Creating a new theme</title>
+      <link>/2016/01/01/creating-a-new-theme/</link>
+      <pubDate>Fri, 01 Jan 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/2016/01/01/creating-a-new-theme/</guid>
+      <description>Overview Hugo is a static HTML and CSS website generator written in [Go][]. It is optimized for speed, easy use and configurability. Hugo takes a directory with content and templates and renders them into a full HTML website.
+Hugo relies on Markdown files with front matter for meta data. And you can run Hugo from any directory. This works well for shared hosts and other systems where you don’t have a privileged account.</description>
+    </item>
+    
+    <item>
       <title>Lorem Ipsum</title>
       <link>/2015/01/01/lorem-ipsum/</link>
       <pubDate>Thu, 01 Jan 2015 13:09:13 -0600</pubDate>
       
       <guid>/2015/01/01/lorem-ipsum/</guid>
       <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
+    </item>
+    
+    <item>
+      <title>Archive</title>
+      <link>/archive/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/archive/</guid>
+      <description></description>
     </item>
     
   </channel>

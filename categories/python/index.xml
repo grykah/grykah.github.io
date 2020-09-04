@@ -17,7 +17,7 @@
       <pubDate>Tue, 04 Aug 2020 00:00:00 +0000</pubDate>
       
       <guid>/2020/08/04/eda/</guid>
-      <description>Exploratory Data Analysis (EDA) is an essential step in any data science project. This step allows us to remove unuseful/incorrect data, understand the relationships within the data, and provides context required to develop models that will ultimately allow for accurte interpretation of results. EDA can be a time consuming process and this step will have to be revisited if shortcuts are taken. However, pandas-profiling is an extremely powerful python package that can help with this process.</description>
+      <description>Exploratory Data Analysis (EDA) is an essential step in any data science project. This step allows us to remove unuseful/incorrect data, understand the relationships within the data, and provides context required to develop models that will ultimately allow for accurate interpretation of results. EDA can be a time consuming process and if shortcuts are taken, it will hurt the analysis in the long run. However, pandas-profiling is an extremely powerful python package that can help with this process.</description>
     </item>
     
     <item>

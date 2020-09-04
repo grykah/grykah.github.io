@@ -37,7 +37,7 @@ To build my shiny app, I am defining inputs as follows:* country: the name of t
       <pubDate>Tue, 04 Aug 2020 00:00:00 +0000</pubDate>
       
       <guid>/2020/08/04/eda/</guid>
-      <description>Exploratory Data Analysis (EDA) is an essential step in any data science project. This step allows us to remove unuseful/incorrect data, understand the relationships within the data, and provides context required to develop models that will ultimately allow for accurte interpretation of results. EDA can be a time consuming process and this step will have to be revisited if shortcuts are taken. However, pandas-profiling is an extremely powerful python package that can help with this process.</description>
+      <description>Exploratory Data Analysis (EDA) is an essential step in any data science project. This step allows us to remove unuseful/incorrect data, understand the relationships within the data, and provides context required to develop models that will ultimately allow for accurate interpretation of results. EDA can be a time consuming process and if shortcuts are taken, it will hurt the analysis in the long run. However, pandas-profiling is an extremely powerful python package that can help with this process.</description>
     </item>
     
     <item>
@@ -68,6 +68,16 @@ import pandas as pdimport numpy as npimport matplotlib.pyplot as plturl_Londo
       
       <guid>/2020/07/10/london-boroughs/</guid>
       <description>HGryx-Boroughs/*!** Twitter Bootstrap**//*!* Bootstrap v3.3.7 (http://getbootstrap.com)* Copyright 2011-2016 Twitter, Inc.* Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)*//*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */html {font-family: sans-serif;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;}body {margin: 0;}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary {display: block;}audio,canvas,progress,video {display: inline-block;vertical-align: baseline;}audio:not([controls]) {display: none;height: 0;}[hidden],template {display: none;}a {background-color: transparent;}a:active,a:hover {outline: 0;}abbr[title] {border-bottom: 1px dotted;}b,strong {font-weight: bold;}dfn {font-style: italic;}h1 {font-size: 2em;margin: 0.</description>
+    </item>
+    
+    <item>
+      <title>Creating a new theme</title>
+      <link>/2016/01/01/creating-a-new-theme/</link>
+      <pubDate>Fri, 01 Jan 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/2016/01/01/creating-a-new-theme/</guid>
+      <description>Overview Hugo is a static HTML and CSS website generator written in [Go][]. It is optimized for speed, easy use and configurability. Hugo takes a directory with content and templates and renders them into a full HTML website.
+Hugo relies on Markdown files with front matter for meta data. And you can run Hugo from any directory. This works well for shared hosts and other systems where you don’t have a privileged account.</description>
     </item>
     
     <item>

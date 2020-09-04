@@ -1,82 +1,177 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
+<head>
+    <title>Exploratory Data Analysis using Pandas Profiling</title>
     <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Hugo 0.74.2" />
-
-
-<title>Exploratory Data Analysis using Pandas Profiling - Hailey Gryka</title>
-<meta property="og:title" content="Exploratory Data Analysis using Pandas Profiling - Hailey Gryka">
-
-
-  <link href='/logo.ico' rel='icon' type='image/x-icon'/>
-
-
-
-  
-
-
-
-
-
-
-
-
-<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
-
-
-
-<link rel="stylesheet" href="/css/fonts.css" media="all">
-<link rel="stylesheet" href="/css/main.css" media="all">
-
-
-
-  </head>
-  <body>
-    <div class="wrapper">
-      <header class="header">
-        <nav class="nav">
-  <a href="/" class="nav-logo">
-    <img src="/images/logo.png"
-         width="50"
-         height="50"
-         alt="Logo">
-  </a>
-
-  <ul class="nav-links">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     
-    <li><a href="/about/">About</a></li>
     
-    <li><a href="https://github.com/grykah">GitHub</a></li>
+
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/bower_components/bootstrap/js/dropdowns-enhancement.js"></script>
+    <script src="/bower_components/bluebird/js/browser/bluebird.js"></script>
+    <script src="//bower_components/talaria/dist/talaria.js"></script>
+    <script src="/bower_components/d3/d3.min.js" charset="utf-8"></script>
+    <script src="/bower_components/cal-heatmap/cal-heatmap.min.js"></script>
+    <script src="/bower_components/highlightjs/highlight.pack.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']]}
+      });
+    </script>
+
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="stylesheet" href="/bower_components/highlightjs/styles/monokai.css" />
+    <link rel="stylesheet" href="/bower_components/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/bower_components/bootstrap/css/dropdowns-enhancement.css" />
+    <link rel="stylesheet" href="/bower_components/talaria/dist/talaria.css" />   
+    <link rel="stylesheet" href="/bower_components/createjs/createjs.css" />
+    <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/bower_components/icomoon/css/icomoon.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/mobile.css" />
+    <link rel="stylesheet" href="/bower_components/cal-heatmap/cal-heatmap.css" />
+
     
-    <li><a href="https://www.linkedin.com/in/hailey-g-96382a18/">Linked-In</a></li>
+
     
-  </ul>
+</head>
+<body>
+<div class="container">
+
+
+
+<header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+
+    	    <div class="navbar-header">
+      		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      		  <span class="sr-only">Toggle navigation</span>
+      		  <span class="icon-bar"></span>
+      		  <span class="icon-bar"></span>
+      		  <span class="icon-bar"></span>
+      		</button>
+		    <h1>
+			    <a class="navbar-brand" href="/">
+				    <span class="icon-phoenix_logo"></span>
+				    
+				    
+				    
+			    </a>
+		    </h1>
+	    </div>
+
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+    
+        <li><a href="#">Home</a></li>
+        <li><a href="/hugo-theme-wave/archive">Archives</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Wiki<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">User</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-submenu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Application</a>
+            <ul class="dropdown-menu">
+              <li><a href="#">List Application</a></li>
+                    <li role="separator" class="divider"></li>
+              <li><a href="#">Accessibility</a></li>
+              <li><a href="#">Application launchers</a></li>
+              <li class="dropdown-submenu">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Command shells</a>
+              <ul class="dropdown-menu">
+                <li class="dropdown-submenu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Bash</a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Invocation</a></li>
+                  <li><a href="#">Command line</a></li>
+                </ul>
+                </li>
+              </ul>
+              </li>
+            </ul>
+            </li>
+            <li><a href="#">Development</a></li>
+            <li><a href="#">Hardware</a></li>
+            <li><a href="#">Networking</a></li>
+            <li><a href="#">System administration</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">GitHub</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Issue</a></li>
+
+    <li>
+	<a href="https://gitlab.com/">
+		<i class="fa fa-gitlab" aria-hidden="true"></i>
+	</a>
+</li>
+<li>
+	<a href="https://github.com/">
+		<i class="fa fa-github" aria-hidden="true"></i>
+	</a>
+</li>
+<li>
+	<a href="https://twitter.com/">
+		<i class="fa fa-twitter" aria-hidden="true"></i>
+	</a>
+
+</li>
+
+<li>
+	<a href="/2020/08/04/eda/">
+		 <i class="fa fa-rss-square" aria-hidden="true"></i>
+	</a>
+</li>
+
+    
+      </ul>
+    </div>
+
+  </div>
 </nav>
 
-      </header>
+</header>
 
 
-<main class="content" role="main">
 
-  <article class="article">
+
+<div id="container">
+   <div class="outer">
+    <section id="main">
+    <article>
+        <div class="article-inner">
+            
+
+            <header class="article-header">
     
-    <span class="article-duration">3 min read</span>
-    
+    <h1 class="article-title" itemprop="name">
+	<a href="/2020/08/04/eda/" class="permalink">Exploratory Data Analysis using Pandas Profiling</a>
+    </h1>
+	<time datetime="2020-08-04 00:00:00 &#43;0000 UTC" itemprop="datePublished">2020-08-04</time>
+    <div class="article-meta">
 
-    <h1 class="article-title">Exploratory Data Analysis using Pandas Profiling</h1>
+        
+    </div>
+</header>
 
-    
-    <span class="article-date">2020-08-04</span>
-    
 
-    <div class="article-content">
-      
+            <div class="article-entry" itemprop="articleBody">
+                
 <script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 
-<p>Exploratory Data Analysis (EDA) is an essential step in any data science project. This step allows us to remove unuseful/incorrect data, understand the relationships within the data, and provides context required to develop models that will ultimately allow for accurte interpretation of results. EDA can be a time consuming process and this step will have to be revisited if shortcuts are taken. However, pandas-profiling is an extremely powerful python package that can help with this process.</p>
+<p>Exploratory Data Analysis (EDA) is an essential step in any data science project. This step allows us to remove unuseful/incorrect data, understand the relationships within the data, and provides context required to develop models that will ultimately allow for accurate interpretation of results. EDA can be a time consuming process and if shortcuts are taken, it will hurt the analysis in the long run. However, pandas-profiling is an extremely powerful python package that can help with this process.</p>
 <p>Herein we will look at an example and the few short lines required to generate loads of exploration in a cleanly formated report.</p>
 <p><a href="https://pypi.org/project/pandas-profiling/">Here</a> is a link to the pandas-profiling project page for more information on the package.</p>
 <p>The dataset I have used is about the cost of insurance and variables that may contribute to the cost. This dataset is available on <a href="https://www.kaggle.com/annetxu/notebook">Kaggle</a>. As we get started, let’s get a bit of information about the dataframe we will be working with, including it’s shape, info, and head values.</p>
@@ -100,11 +195,11 @@ df.shape</code></pre>
 ## memory usage: 73.3+ KB</code></pre>
 <pre class="python"><code>df.sample(3)</code></pre>
 <pre><code>##       age     sex     bmi  children smoker     region      charges
-## 724    50  female  27.075         1     no  northeast  10106.13425
-## 988    34    male  34.675         0     no  northeast   4518.82625
-## 1052   49    male  29.830         1     no  northeast   9288.02670</code></pre>
-<p>These quick calls on the dataframe gave us a bit of information that is helpful moving forward. We know the how many rows and columns are present, which is of particular interest since a limitation of the pandas-profiling package is the amount of time and memory it requires to run, particularly on large datasets. We also know the column names and their type. With this information, we know which methods the describe call would help us with and which columns we should handle as categories, however, this would require more lines of code! Finally, the sample call gives us a better idea of what the data will actually look like which is important for making decisions about how to cleaning, and later model, the data.</p>
-<p>This is all freat information to have and could guide us as we start EDA. There are still many things we need to learn about the data though. For example: is there duplicate data; does the data contain duplicates or missing values; how do the variables relate to one another? Each of these questions dictate how we will handle cleaning, further exploration, and modeling the data to make the best predictions possible. They also require a lot more code to answer! This is where the magic of pandas profiling comes in. In one line of code we can generate a report that answers all of these questions, and more, so we can make efficient use of our EDA time.</p>
+## 1248   18  female  39.820         0     no  southeast   1633.96180
+## 1085   39  female  18.300         5    yes  southwest  19023.26000
+## 133    19    male  25.555         0     no  northwest   1632.56445</code></pre>
+<p>These quick calls on the dataframe gave us a bit of information that is helpful moving forward. We know how many rows and columns are present, which is of particular interest since a limitation of the pandas-profiling package is the amount of time and memory it requires to run, particularly on large datasets. We also know the column names and their type. With this information, we know which methods the describe call would help us with and which columns we should handle as categories, however, this would require more lines of code! Finally, the sample call gives us a better idea of what the data will actually look like which is important for making decisions about how to clean, and later model, the data.</p>
+<p>This is all great information to have and could guide us as we start EDA. There are still many things we need to learn about the data though. For example: is there duplicate data; does the data contain missing values; how do the variables relate to one another? Each of these questions dictate how we will handle cleaning, further exploration, and modeling the data to make the best predictions possible. They also require a lot more code to answer! This is where the magic of pandas profiling comes in. In one line of code we can generate a report that answers all of these questions, and more, so we can make efficient use of our EDA time.</p>
 <pre class="python"><code>profile = ProfileReport(df, title=&quot;Pandas Profiling Report&quot;)</code></pre>
 <p><br></p>
 <iframe width="700" height="1200" scrolling="yes" frameborder="no" src="https://grykah.github.io/2020/08/04/eda/profileOutput.html">
@@ -116,78 +211,220 @@ profile.to_widgets() #creates a widget containing all of the report information
 profile.to_notebook_iframe() #creates an iframe containing all of the report information
 profile = ProfileReport(huge_df, title=&quot;Pandas Profiling Report&quot;, minimal=True)</code></pre>
 
-    </div>
-  </article>
+            </div>
 
-  
-<section id="comments">
-  <div id="disqus_thread"></div>
-  <script>
-  var disqus_config = function () {
-  
-  };
-  (function() {
-    var inIFrame = function() {
-      var iframe = true;
-      try { iframe = window.self !== window.top; } catch (e) {}
-      return iframe;
-    };
-    if (inIFrame()) return;
-    var d = document, s = d.createElement('script');
-    s.src = '//grykah.disqus.com/embed.js'; s.async = true;
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-  })();
+            <div class="tweet-footer">
+<a href="http://twitter.com/share?url=%2f2020%2f08%2f04%2feda%2f&text=Exploratory%20Data%20Analysis%20using%20Pandas%20Profiling" target="_blank" title="Twitter" >
+<span class="tweet-botton">
+    	<i class="fa fa-twitter" aria-hidden="true"></i>
+    	   Compose new Tweet 
+    </span>
+    </a>
+</div>
+
+<footer class="article-footer">
+
+    
+    
+
+    <a href="/2020/08/04/eda//#disqus_thread" class="article-comment-link">
+        
+    </a>
+    
+</footer>
+
+        </div>
+
+        
+
+
+  <script type="text/javascript">
+   talaria.init({REPOSITORY_NAME: 'syui.gitlab.io-comment',
+                 GITHUB_USERNAME: 'mba-hack'});
   </script>
-  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </article>
+
+    <section id="comments">
+
+        <div id="disqus_thread">
+            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "grykah" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+    </section>
 </section>
 
+    <aside id="sidebar">
+    <div class="widget-wrap">
+<input id="search" type="text" placeholder="search">
+<ul id="results">
+</ul>
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/bower_components/lunr.js/lunr.min.js"></script>
+</div>
 
+    
 
-</main>
+<div class="widget-wrap">
+    <div class="widget">
+        <ul id="recent-post">
+		<li id="first-recent"><a href="/index.xml" id="firstmove" class="move"><h3 class="widget-title">
+			Posts
+    </h3></a></li>
+            
 
-      <footer class="footer">
-        <ul class="footer-links">
-          <li>
-            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
-          </li>
-          <li>
-            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
-          </li>
+<li><a href="/2020/08/16/beautiful-r-plots/" class="move">  Beautiful R Plots</a> </li>
+            
+
+<li><a href="/2020/08/11/covid-19-data-monitoring/" class="move">  COVID-19 Data Monitoring</a> </li>
+            
+
+<li><a href="/2020/08/04/eda/" class="move">  Exploratory Data Analysis using Pandas Profiling</a> </li>
+            
+
+<li><a href="/2020/07/27/use-of-datamaid-in-data-cleaning/" class="move">  Use of dataMaid in Data Cleaning</a> </li>
+            
+
+<li><a href="/2020/07/19/plotting-variables-london-boroughs/" class="move">  Plotting London Boroughs</a> </li>
+            
+
+<li><a href="/2020/07/10/london-boroughs/" class="move">  London Boroughs</a> </li>
+            
+
+<li><a href="/2016/01/01/creating-a-new-theme/" class="move">  Creating a new theme</a> </li>
+            
+
+<li><a href="/2015/01/01/lorem-ipsum/" class="move">  Lorem Ipsum</a> </li>
+            
         </ul>
-      </footer>
-
     </div>
-    
-
-
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-
-
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
-<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+</div>
 
 
 
     
 
-    
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-172420514-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
+<div class="widget-wrap">
+    <div class="widget">
+        <ul class="category-list">
+    <h3 class="widget-title">Categories </h3>
+            
+                <a class="category-list-link" href="/categories/jupyter">
+            <li class="category-list-item">
+                    jupyter
+                <span class="category-list-count">2</span>
+            </li>
+                </a>
+            
+                <a class="category-list-link" href="/categories/news">
+            <li class="category-list-item">
+                    news
+                <span class="category-list-count">1</span>
+            </li>
+                </a>
+            
+                <a class="category-list-link" href="/categories/python">
+            <li class="category-list-item">
+                    python
+                <span class="category-list-count">2</span>
+            </li>
+                </a>
+            
+                <a class="category-list-link" href="/categories/r">
+            <li class="category-list-item">
+                    r
+                <span class="category-list-count">1</span>
+            </li>
+                </a>
+            
+                <a class="category-list-link" href="/categories/rmd">
+            <li class="category-list-item">
+                    rmd
+                <span class="category-list-count">4</span>
+            </li>
+                </a>
+            
+                <a class="category-list-link" href="/categories/shiny">
+            <li class="category-list-item">
+                    shiny
+                <span class="category-list-count">1</span>
+            </li>
+                </a>
+            
+        </ul>
+    </div>
+</div>
 
-  </body>
+
+
+    
+
+<div class="widget-wrap">
+	<ul class="category-list">
+    <h3 class="widget-title">Tags  </h3>
+    <div class="widget tagcloud">
+
+	   
+        
+        <a href="/tags/covid" style="font-size: 12px;">covid</a>
+        
+        <a href="/tags/data-analysis" style="font-size: 12px;">data-analysis</a>
+        
+        <a href="/tags/data-monitoring" style="font-size: 12px;">data-monitoring</a>
+        
+        <a href="/tags/data-visualization" style="font-size: 12px;">data-visualization</a>
+        
+        <a href="/tags/exploratory-data-analysis" style="font-size: 12px;">exploratory-data-analysis</a>
+        
+        <a href="/tags/golang" style="font-size: 12px;">golang</a>
+        
+        <a href="/tags/home-price" style="font-size: 12px;">home-price</a>
+        
+        <a href="/tags/hugo" style="font-size: 12px;">hugo</a>
+        
+        <a href="/tags/jekyll" style="font-size: 12px;">jekyll</a>
+        
+    </div>
+</ul>
+</div>
+
+
+
+    
+</aside>
+
+</div>
+</div>
+
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+	<footer id="footer-left">
+	    &copy; 2020 <a href="https://github.com/syui">syui</a>. <br>
+	    Powered by <a href="//gohugo.io">Hugo</a>. Theme by <a href="https://gitlab.com/syui/hugo-theme-wave">wave</a>.
+	</footer>
+	    <footer id="footer-center"> <a href="#"><span class="icon-phoenix_logo"></span></a>  </footer>
+	   <footer id="footer-right"> <a href="">Reference</a> <a href="">Keybind</a> <a href="">Command</a> <a href="">API</a>  </footer>
+    </div>
+  </div>
+</footer>
+
+</body>
 </html>
-

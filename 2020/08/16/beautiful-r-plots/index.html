@@ -1,92 +1,184 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
+<head>
+    <title>Beautiful R Plots</title>
     <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Hugo 0.74.2" />
-
-
-<title>Beautiful R Plots - Hailey Gryka</title>
-<meta property="og:title" content="Beautiful R Plots - Hailey Gryka">
-
-
-  <link href='/logo.ico' rel='icon' type='image/x-icon'/>
-
-
-
-  
-
-
-
-
-
-
-
-
-<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
-
-
-
-<link rel="stylesheet" href="/css/fonts.css" media="all">
-<link rel="stylesheet" href="/css/main.css" media="all">
-
-
-
-  </head>
-  <body>
-    <div class="wrapper">
-      <header class="header">
-        <nav class="nav">
-  <a href="/" class="nav-logo">
-    <img src="/images/logo.png"
-         width="50"
-         height="50"
-         alt="Logo">
-  </a>
-
-  <ul class="nav-links">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     
-    <li><a href="/about/">About</a></li>
     
-    <li><a href="https://github.com/grykah">GitHub</a></li>
+
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/bower_components/bootstrap/js/dropdowns-enhancement.js"></script>
+    <script src="/bower_components/bluebird/js/browser/bluebird.js"></script>
+    <script src="//bower_components/talaria/dist/talaria.js"></script>
+    <script src="/bower_components/d3/d3.min.js" charset="utf-8"></script>
+    <script src="/bower_components/cal-heatmap/cal-heatmap.min.js"></script>
+    <script src="/bower_components/highlightjs/highlight.pack.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']]}
+      });
+    </script>
+
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="stylesheet" href="/bower_components/highlightjs/styles/monokai.css" />
+    <link rel="stylesheet" href="/bower_components/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/bower_components/bootstrap/css/dropdowns-enhancement.css" />
+    <link rel="stylesheet" href="/bower_components/talaria/dist/talaria.css" />   
+    <link rel="stylesheet" href="/bower_components/createjs/createjs.css" />
+    <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/bower_components/icomoon/css/icomoon.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/mobile.css" />
+    <link rel="stylesheet" href="/bower_components/cal-heatmap/cal-heatmap.css" />
+
     
-    <li><a href="https://www.linkedin.com/in/hailey-g-96382a18/">Linked-In</a></li>
+
     
-  </ul>
+</head>
+<body>
+<div class="container">
+
+
+
+<header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+
+    	    <div class="navbar-header">
+      		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      		  <span class="sr-only">Toggle navigation</span>
+      		  <span class="icon-bar"></span>
+      		  <span class="icon-bar"></span>
+      		  <span class="icon-bar"></span>
+      		</button>
+		    <h1>
+			    <a class="navbar-brand" href="/">
+				    <span class="icon-phoenix_logo"></span>
+				    
+				    
+				    
+			    </a>
+		    </h1>
+	    </div>
+
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+    
+        <li><a href="#">Home</a></li>
+        <li><a href="/hugo-theme-wave/archive">Archives</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Wiki<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">User</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-submenu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Application</a>
+            <ul class="dropdown-menu">
+              <li><a href="#">List Application</a></li>
+                    <li role="separator" class="divider"></li>
+              <li><a href="#">Accessibility</a></li>
+              <li><a href="#">Application launchers</a></li>
+              <li class="dropdown-submenu">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Command shells</a>
+              <ul class="dropdown-menu">
+                <li class="dropdown-submenu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Bash</a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Invocation</a></li>
+                  <li><a href="#">Command line</a></li>
+                </ul>
+                </li>
+              </ul>
+              </li>
+            </ul>
+            </li>
+            <li><a href="#">Development</a></li>
+            <li><a href="#">Hardware</a></li>
+            <li><a href="#">Networking</a></li>
+            <li><a href="#">System administration</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">GitHub</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Issue</a></li>
+
+    <li>
+	<a href="https://gitlab.com/">
+		<i class="fa fa-gitlab" aria-hidden="true"></i>
+	</a>
+</li>
+<li>
+	<a href="https://github.com/">
+		<i class="fa fa-github" aria-hidden="true"></i>
+	</a>
+</li>
+<li>
+	<a href="https://twitter.com/">
+		<i class="fa fa-twitter" aria-hidden="true"></i>
+	</a>
+
+</li>
+
+<li>
+	<a href="/2020/08/16/beautiful-r-plots/">
+		 <i class="fa fa-rss-square" aria-hidden="true"></i>
+	</a>
+</li>
+
+    
+      </ul>
+    </div>
+
+  </div>
 </nav>
 
-      </header>
+</header>
 
 
-<main class="content" role="main">
 
-  <article class="article">
+
+<div id="container">
+   <div class="outer">
+    <section id="main">
+    <article>
+        <div class="article-inner">
+            
+
+            <header class="article-header">
     
-    <span class="article-duration">2 min read</span>
-    
+    <h1 class="article-title" itemprop="name">
+	<a href="/2020/08/16/beautiful-r-plots/" class="permalink">Beautiful R Plots</a>
+    </h1>
+	<time datetime="2020-08-16 00:00:00 &#43;0000 UTC" itemprop="datePublished">2020-08-16</time>
+    <div class="article-meta">
 
-    <h1 class="article-title">Beautiful R Plots</h1>
+        
+    </div>
+</header>
 
-    
-    <span class="article-date">2020-08-16</span>
-    
 
-    <div class="article-content">
-      
+            <div class="article-entry" itemprop="articleBody">
+                
 <script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 
 <p>The R language is fantastic for quickly turning data into plots, however, it is not commonly used for creating visual aids for presentation or publication figures. While it is more common to produce final figures with other software, the same quality figures can be created in R.</p>
-<p>Herein I show several examples of plots, that I have re-created using R, in an aesthetically similar manner. In each example, I provide the original figure and then the R-code I used for replication, followed by the replicate figure. I am using the ggplot2 package although other packages could certainly achieve similar outcomes.</p>
+<p>Herein I show several examples of plots, that I have re-created using R, in an aesthetically similar manner. In each example, I provide the original figure and then the R-code I used for replication, followed by the replicate figure. While I am exploring packages like waffle and ggplot2, there are other packages could certainly achieve similar outcomes.</p>
 <p>I would love to hear any recommendations on possible improvements in the comments or <span class="citation">@gryk_h</span> on twitter.</p>
 <div id="example-1" class="section level5">
 <h5>Example 1</h5>
-<p>! <a href="/2020/Programming/SampleWork/x.Website/HGRYK/public/images/WikiWaffle.png">Wikipedia Waffle Plot</a>
-This example is from the wikipedia page <a href="https://en.wikipedia.org/wiki/Pie_chart">Pie Chart</a>.</p>
-<p><br></p>
-<iframe width="700" height="400" scrolling="no" frameborder="no" src="https://github.com/grykah/grykah.github.io/blob/master/images/WikiWaffle.PNG?raw=true">
-</iframe>
-<p><br></p>
+<p>This example is from the wikipedia page <a href="https://en.wikipedia.org/wiki/Pie_chart">Pie Chart</a>.</p>
+<p><img src="../../static/images/WikiWaffle.png" width="186" /></p>
+<p>This is the method used to reproduce the figure:</p>
 <pre class="r"><code>pubs &lt;- c(
   `E` = 16, `D` = 36, `C` = 15, `B` = 32, `A` = 1)
 waffle(
@@ -96,11 +188,9 @@ waffle(
 </div>
 <div id="example-2" class="section level5">
 <h5>Example 2</h5>
-<p>! <a href="/2020/Programming/SampleWork/x.Website/HGRYK/public/images/GunHomicides.png">Gun Homicide Bar Plot</a></p>
-<p><br></p>
-<iframe width="700" height="400" scrolling="no" frameborder="no" src="https://github.com/grykah/grykah.github.io/blob/master/images/GunHomicides.png?raw=true">
-</iframe>
-<p><br></p>
+<p>This image was found with a quick google search query <code>gun homicides plot</code>. There are lots of variations out there.
+<img src="../../static/images/GunHomicides.png" width="384" /></p>
+<p>This is the method used to reproduce the figure (with minor aesetic upgrades):</p>
 <pre class="r"><code>dat &lt;- tibble(country = toupper(c(&quot;US&quot;, &quot;France&quot;, &quot;Canada&quot;, &quot;Germany&quot;, &quot;Australia&quot;, &quot;UK&quot;, &quot;Japan&quot;)),
               count = c(11.2, 2.4, 1.9, 1.0, 0.9, 0.2, 0),
               label = c(as.character(c(11.2, 2.4, 1.9, 1.0, 0.9, 0.2, 0))),
@@ -124,90 +214,229 @@ dat %&gt;% mutate(country = reorder(country, -count)) %&gt;%
 </div>
 <div id="example-3" class="section level5">
 <h5>Example 3</h5>
-<p>! <a href="/2020/Programming/SampleWork/x.Website/HGRYK/public/images/FunnelPlotFig2.png">Publication Bias Funnel Plot</a></p>
 <p>This plot was found on ResearchGate in the following <a href="https://www.researchgate.net/publication/320541410_Research_Review_Is_anxiety_associated_with_negative_interpretations_of_ambiguity_in_children_and_adolescents_A_systematic_review_and_meta-analysis">Review</a>. Alternate data was used to produce this plot.</p>
-<p><br></p>
-<iframe width="700" height="400" scrolling="no" frameborder="no" src="https://github.com/grykah/grykah.github.io/blob/master/images/FunnelPlotFig2.png?raw=true">
-</iframe>
-<p><br></p>
+<p><img src="../../static/images/FunnelPlotFig2.png" width="361" /></p>
+<p>This is the method used to reproduce the figure, although a random dataset was used to generate the data, so slight differences in the points should be expected:</p>
 <pre class="r"><code>hypFun &lt;- dat.hackshaw1998 
 res &lt;- rma(yi, vi, data=hypFun, measure=&quot;OR&quot;, method=&quot;FE&quot;)
 funnel(res, xlab = &#39;Observed Outcome&#39;)</code></pre>
 <p><img src="/post/2020-08-16-beautiful-r-plots_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 </div>
 
-    </div>
-  </article>
+            </div>
 
-  
-<section id="comments">
-  <div id="disqus_thread"></div>
-  <script>
-  var disqus_config = function () {
-  
-  };
-  (function() {
-    var inIFrame = function() {
-      var iframe = true;
-      try { iframe = window.self !== window.top; } catch (e) {}
-      return iframe;
-    };
-    if (inIFrame()) return;
-    var d = document, s = d.createElement('script');
-    s.src = '//grykah.disqus.com/embed.js'; s.async = true;
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-  })();
+            <div class="tweet-footer">
+<a href="http://twitter.com/share?url=%2f2020%2f08%2f16%2fbeautiful-r-plots%2f&text=Beautiful%20R%20Plots" target="_blank" title="Twitter" >
+<span class="tweet-botton">
+    	<i class="fa fa-twitter" aria-hidden="true"></i>
+    	   Compose new Tweet 
+    </span>
+    </a>
+</div>
+
+<footer class="article-footer">
+
+    
+    
+
+    <a href="/2020/08/16/beautiful-r-plots//#disqus_thread" class="article-comment-link">
+        
+    </a>
+    
+</footer>
+
+        </div>
+
+        
+
+
+  <script type="text/javascript">
+   talaria.init({REPOSITORY_NAME: 'syui.gitlab.io-comment',
+                 GITHUB_USERNAME: 'mba-hack'});
   </script>
-  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </article>
+
+    <section id="comments">
+
+        <div id="disqus_thread">
+            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "grykah" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+    </section>
 </section>
 
+    <aside id="sidebar">
+    <div class="widget-wrap">
+<input id="search" type="text" placeholder="search">
+<ul id="results">
+</ul>
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/bower_components/lunr.js/lunr.min.js"></script>
+</div>
 
+    
 
-</main>
+<div class="widget-wrap">
+    <div class="widget">
+        <ul id="recent-post">
+		<li id="first-recent"><a href="/index.xml" id="firstmove" class="move"><h3 class="widget-title">
+			Posts
+    </h3></a></li>
+            
 
-      <footer class="footer">
-        <ul class="footer-links">
-          <li>
-            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
-          </li>
-          <li>
-            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
-          </li>
+<li><a href="/2020/08/16/beautiful-r-plots/" class="move">  Beautiful R Plots</a> </li>
+            
+
+<li><a href="/2020/08/11/covid-19-data-monitoring/" class="move">  COVID-19 Data Monitoring</a> </li>
+            
+
+<li><a href="/2020/08/04/eda/" class="move">  Exploratory Data Analysis using Pandas Profiling</a> </li>
+            
+
+<li><a href="/2020/07/27/use-of-datamaid-in-data-cleaning/" class="move">  Use of dataMaid in Data Cleaning</a> </li>
+            
+
+<li><a href="/2020/07/19/plotting-variables-london-boroughs/" class="move">  Plotting London Boroughs</a> </li>
+            
+
+<li><a href="/2020/07/10/london-boroughs/" class="move">  London Boroughs</a> </li>
+            
+
+<li><a href="/2016/01/01/creating-a-new-theme/" class="move">  Creating a new theme</a> </li>
+            
+
+<li><a href="/2015/01/01/lorem-ipsum/" class="move">  Lorem Ipsum</a> </li>
+            
         </ul>
-      </footer>
-
     </div>
-    
-
-
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-
-
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
-<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+</div>
 
 
 
     
 
-    
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-172420514-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
+<div class="widget-wrap">
+    <div class="widget">
+        <ul class="category-list">
+    <h3 class="widget-title">Categories </h3>
+            
+                <a class="category-list-link" href="/categories/jupyter">
+            <li class="category-list-item">
+                    jupyter
+                <span class="category-list-count">2</span>
+            </li>
+                </a>
+            
+                <a class="category-list-link" href="/categories/news">
+            <li class="category-list-item">
+                    news
+                <span class="category-list-count">1</span>
+            </li>
+                </a>
+            
+                <a class="category-list-link" href="/categories/python">
+            <li class="category-list-item">
+                    python
+                <span class="category-list-count">2</span>
+            </li>
+                </a>
+            
+                <a class="category-list-link" href="/categories/r">
+            <li class="category-list-item">
+                    r
+                <span class="category-list-count">1</span>
+            </li>
+                </a>
+            
+                <a class="category-list-link" href="/categories/rmd">
+            <li class="category-list-item">
+                    rmd
+                <span class="category-list-count">4</span>
+            </li>
+                </a>
+            
+                <a class="category-list-link" href="/categories/shiny">
+            <li class="category-list-item">
+                    shiny
+                <span class="category-list-count">1</span>
+            </li>
+                </a>
+            
+        </ul>
+    </div>
+</div>
 
-  </body>
+
+
+    
+
+<div class="widget-wrap">
+	<ul class="category-list">
+    <h3 class="widget-title">Tags  </h3>
+    <div class="widget tagcloud">
+
+	   
+        
+        <a href="/tags/covid" style="font-size: 12px;">covid</a>
+        
+        <a href="/tags/data-analysis" style="font-size: 12px;">data-analysis</a>
+        
+        <a href="/tags/data-monitoring" style="font-size: 12px;">data-monitoring</a>
+        
+        <a href="/tags/data-visualization" style="font-size: 12px;">data-visualization</a>
+        
+        <a href="/tags/exploratory-data-analysis" style="font-size: 12px;">exploratory-data-analysis</a>
+        
+        <a href="/tags/golang" style="font-size: 12px;">golang</a>
+        
+        <a href="/tags/home-price" style="font-size: 12px;">home-price</a>
+        
+        <a href="/tags/hugo" style="font-size: 12px;">hugo</a>
+        
+        <a href="/tags/jekyll" style="font-size: 12px;">jekyll</a>
+        
+    </div>
+</ul>
+</div>
+
+
+
+    
+</aside>
+
+</div>
+</div>
+
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+	<footer id="footer-left">
+	    &copy; 2020 <a href="https://github.com/syui">syui</a>. <br>
+	    Powered by <a href="//gohugo.io">Hugo</a>. Theme by <a href="https://gitlab.com/syui/hugo-theme-wave">wave</a>.
+	</footer>
+	    <footer id="footer-center"> <a href="#"><span class="icon-phoenix_logo"></span></a>  </footer>
+	   <footer id="footer-right"> <a href="">Reference</a> <a href="">Keybind</a> <a href="">Command</a> <a href="">API</a>  </footer>
+    </div>
+  </div>
+</footer>
+
+</body>
 </html>
-
