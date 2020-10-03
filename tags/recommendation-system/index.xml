@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Shiny on Hailey Gryka</title>
-    <link>/categories/shiny/</link>
-    <description>Recent content in Shiny on Hailey Gryka</description>
+    <title>recommendation system on Hailey Gryka</title>
+    <link>/tags/recommendation-system/</link>
+    <description>Recent content in recommendation system on Hailey Gryka</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 15 Sep 2020 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/categories/shiny/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/recommendation-system/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -19,16 +19,6 @@
       <guid>/2020/09/15/movie-recommendation-system/</guid>
       <description>Movie Recommendation SystemI was recently inspired to create a movie recommendation system when a family member started hosting movie nights during the pandemic. There are some diverse tastes amongst the group of attenties so utilizing multiple genres and movies was a benefit for this project.
 This post is a final product of a descent bit of initial data exploration, preprocessing, and similarity testing. Ultimately, the recommenderlab package was extremely helpful, although, I also explored tm and some of the statistical methods available through that package.</description>
-    </item>
-    
-    <item>
-      <title>COVID-19 Data Monitoring</title>
-      <link>/2020/08/11/covid-19-data-monitoring/</link>
-      <pubDate>Tue, 11 Aug 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/2020/08/11/covid-19-data-monitoring/</guid>
-      <description>I recently began a project utilizing the incidence of COVID-19 in relation to other variables. In order to ensure my data is updated frequently enough, I wanted to have a method of monitoring COVID-19, real time, to see when any major changes occur. In order to achieve this, I built an interactive shiny app to monitor the data.
-To build my shiny app, I am defining inputs as follows:* country: the name of the country* type: the type of case (i.</description>
     </item>
     
   </channel>

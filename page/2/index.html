@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-    <title>jekyll</title>
+	<meta name="generator" content="Hugo 0.74.2" />
+    <title>Hailey Gryka</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     
@@ -36,15 +37,18 @@
     <link rel="stylesheet" href="/css/mobile.css" />
     <link rel="stylesheet" href="/bower_components/cal-heatmap/cal-heatmap.css" />
 
-    /tags/jekyll/index.xml
-        <link rel="alternate" type="application/rss+xml" href="/tags/jekyll/index.xml" title="Hailey Gryka" />
+    /index.xml
+        <link rel="alternate" type="application/rss+xml" href="/index.xml" title="Hailey Gryka" />
     
 
     
 </head>
 <body>
 <div class="container">
- 
+
+
+<div id="container">
+    
 
 <header id="header">
   <div id="header-main" class="header-inner">
@@ -130,7 +134,7 @@
 </li>
 
 <li>
-	<a href="/tags/jekyll/">
+	<a href="/">
 		 <i class="fa fa-rss-square" aria-hidden="true"></i>
 	</a>
 </li>
@@ -147,50 +151,93 @@
 
 
 
-<div id="container">
+    <div id="top-image">
+	<div id="top-image-wrap">
+		<iframe src="/bower_components/particlesjs/particlesjs.html"></iframe>
+	</div>
+</div>
+
     <div class="outer">
-        <section id="main">
-            <section class="archives-wrap">
-                <div class="archive-category-wrap">
-                    <span class="archive-category">jekyll</span>
-                </div>
-                <div class="archives">
-                    
-                    
-                    
-                    
-                        <article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
 
-        <div class="archive-article-thumbnail">
+    <section id="main">
+
+    
+    
+    
+    
+    
+    
+    
+    <article class="article article-type-post" itemscope="" itemprop="blogPost">
+
+	    <div class="article-inner">
 
             
-            <a href="/2016/01/01/creating-a-new-theme/" class="thumbnail">
-                <span class="thumbnail-image thumbnail-none"></span>
             </a>
-            
-        </div>
-        <header class="archive-article-header">
-            <h1 itemprop="name">
-            <a class="archive-article-title" href="/2016/01/01/creating-a-new-theme/">Creating a new theme</a>
-            </h1>
-            <div class="archive-article-date">
-		    
-                <time datetime="2016-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">2016-01-01</time>
-            </div>
-        </header>
+
+            <header class="article-header">
+    
+    <h1 class="article-title" itemprop="name">
+	<a href="/archive/" class="permalink">Archive</a>
+    </h1>
+	<time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+    <div class="article-meta">
+
+        
     </div>
-</article>
- 
-                    
-                </div>
-            </section>
-            <nav id="page-nav">
+</header>
+
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>
+                     ...
+                </p>
+                <p class="article-more-link">
+                    <a href="/archive/">
+			    Read more
+			    
+                    </a>
+                </p>
+            </div>
+	    
+        </div>
+    </article>
+    
+    <div class="heatmap">
+	    <h3>Calendar Activities</h3>
+        <div id="cal-heatmap"></div>
+        <div id="example-heatmap"></div>
+	<script type="text/javascript">
+	var cal = new CalHeatMap();
+	cal.init({
+		itemSelector: "#example-heatmap",
+		domain: "day",
+		data: "/hugo-theme-wave/json/datas-years.json",
+		start: new Date(2000, 0),
+		cellSize: 9,
+		range: 14,
+		previousSelector: "#example-b-PreviousDomain-selector",
+		nextSelector: "#example-b-NextDomain-selector",
+		legend: [2, 4, 6, 8],
+      		tooltip: true 
+	});
+	</script>
+    </div>
+    <nav id="page-nav">
+
+    
+        <a class="extend prev" rel="prev" href="/">
+            « 
+        </a>
+    
+    
 
 </nav>
 
-        </section>
-        <aside id="sidebar">
+</section>
+
+
+    <aside id="sidebar">
     <div class="widget-wrap">
 <input id="search" type="text" placeholder="search">
 <ul id="results">
@@ -333,6 +380,7 @@
 
     
 </aside>
+
 
     </div>
 </div>

@@ -6,10 +6,20 @@
     <description>Recent content in Posts on Hailey Gryka</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 16 Aug 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 15 Sep 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Movie Recommendation System</title>
+      <link>/2020/09/15/movie-recommendation-system/</link>
+      <pubDate>Tue, 15 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/09/15/movie-recommendation-system/</guid>
+      <description>Movie Recommendation SystemI was recently inspired to create a movie recommendation system when a family member started hosting movie nights during the pandemic. There are some diverse tastes amongst the group of attenties so utilizing multiple genres and movies was a benefit for this project.
+This post is a final product of a descent bit of initial data exploration, preprocessing, and similarity testing. Ultimately, the recommenderlab package was extremely helpful, although, I also explored tm and some of the statistical methods available through that package.</description>
+    </item>
     
     <item>
       <title>Beautiful R Plots</title>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-    <title>jekyll</title>
+    <title>Movie Recommendation System</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     
@@ -36,15 +36,14 @@
     <link rel="stylesheet" href="/css/mobile.css" />
     <link rel="stylesheet" href="/bower_components/cal-heatmap/cal-heatmap.css" />
 
-    /tags/jekyll/index.xml
-        <link rel="alternate" type="application/rss+xml" href="/tags/jekyll/index.xml" title="Hailey Gryka" />
     
 
     
 </head>
 <body>
 <div class="container">
- 
+
+
 
 <header id="header">
   <div id="header-main" class="header-inner">
@@ -130,7 +129,7 @@
 </li>
 
 <li>
-	<a href="/tags/jekyll/">
+	<a href="/2020/09/15/movie-recommendation-system/">
 		 <i class="fa fa-rss-square" aria-hidden="true"></i>
 	</a>
 </li>
@@ -148,49 +147,103 @@
 
 
 <div id="container">
-    <div class="outer">
-        <section id="main">
-            <section class="archives-wrap">
-                <div class="archive-category-wrap">
-                    <span class="archive-category">jekyll</span>
-                </div>
-                <div class="archives">
-                    
-                    
-                    
-                    
-                        <article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-
-        <div class="archive-article-thumbnail">
-
+   <div class="outer">
+    <section id="main">
+    <article>
+        <div class="article-inner">
             
-            <a href="/2016/01/01/creating-a-new-theme/" class="thumbnail">
-                <span class="thumbnail-image thumbnail-none"></span>
-            </a>
-            
-        </div>
-        <header class="archive-article-header">
-            <h1 itemprop="name">
-            <a class="archive-article-title" href="/2016/01/01/creating-a-new-theme/">Creating a new theme</a>
-            </h1>
-            <div class="archive-article-date">
-		    
-                <time datetime="2016-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">2016-01-01</time>
-            </div>
-        </header>
+
+            <header class="article-header">
+    
+    <h1 class="article-title" itemprop="name">
+	<a href="/2020/09/15/movie-recommendation-system/" class="permalink">Movie Recommendation System</a>
+    </h1>
+	<time datetime="2020-09-15 00:00:00 &#43;0000 UTC" itemprop="datePublished">2020-09-15</time>
+    <div class="article-meta">
+
+        
     </div>
-</article>
- 
-                    
-                </div>
-            </section>
-            <nav id="page-nav">
+</header>
 
-</nav>
 
-        </section>
-        <aside id="sidebar">
+            <div class="article-entry" itemprop="articleBody">
+                
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<div id="movie-recommendation-system" class="section level2">
+<h2>Movie Recommendation System</h2>
+<p>I was recently inspired to create a movie recommendation system when a family member started hosting movie nights during the pandemic. There are some diverse tastes amongst the group of attenties so utilizing multiple genres and movies was a benefit for this project.</p>
+<p>This post is a final product of a descent bit of initial data exploration, preprocessing, and similarity testing. Ultimately, the <code>recommenderlab</code> package was extremely helpful, although, I also explored <code>tm</code> and some of the statistical methods available through that package.</p>
+<p>The method I found to be optimal (through Pearson correlation and Cosine distance) for making recommendations was the <code>user-based collaborative filtering (UBCF)</code>. There are many alternatives available such as <code>item-based collaborative filtering (IBCF)</code>.</p>
+<p>If you have made a recommendation system or have recommendations for this movie recommender, I would love to hear from you in the comments or <span class="citation">@gryk_h</span> on twitter!</p>
+<p><br></p>
+<iframe width="700" height="1100" scrolling="no" frameborder="no" src="https://grykah.shinyapps.io/MovieRecommenderSystem/?_ga=2.243647879.368872904.1601692102-1711950060.1601692102">
+</iframe>
+<p><br></p>
+</div>
+
+            </div>
+
+            <div class="tweet-footer">
+<a href="http://twitter.com/share?url=%2f2020%2f09%2f15%2fmovie-recommendation-system%2f&text=Movie%20Recommendation%20System" target="_blank" title="Twitter" >
+<span class="tweet-botton">
+    	<i class="fa fa-twitter" aria-hidden="true"></i>
+    	   Compose new Tweet 
+    </span>
+    </a>
+</div>
+
+<footer class="article-footer">
+
+    
+    
+
+    <a href="/2020/09/15/movie-recommendation-system//#disqus_thread" class="article-comment-link">
+        
+    </a>
+    
+</footer>
+
+        </div>
+
+        
+
+
+  <script type="text/javascript">
+   talaria.init({REPOSITORY_NAME: 'syui.gitlab.io-comment',
+                 GITHUB_USERNAME: 'mba-hack'});
+  </script>
+    </article>
+
+    <section id="comments">
+
+        <div id="disqus_thread">
+            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "grykah" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+    </section>
+</section>
+
+    <aside id="sidebar">
     <div class="widget-wrap">
 <input id="search" type="text" placeholder="search">
 <ul id="results">
@@ -334,7 +387,7 @@
     
 </aside>
 
-    </div>
+</div>
 </div>
 
 <footer id="footer">
