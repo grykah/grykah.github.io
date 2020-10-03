@@ -1,0 +1,26 @@
+0000000000000000000000000000000000000000 920a4adbc240c7cb9411ffbd0c450c2b36105906 HGRYK <grykah@gmail.com> 1594427143 -0500	clone: from https://github.com/grykah/grykah.github.io.git
+920a4adbc240c7cb9411ffbd0c450c2b36105906 0917c7c945254ceb08ede9819dc3ec3f06c7bb60 HGRYK <grykah@gmail.com> 1594427379 -0500	commit: draft site
+0917c7c945254ceb08ede9819dc3ec3f06c7bb60 40ce3284abf927c0515210f1a5b7ffb4f9227274 HGRYK <grykah@gmail.com> 1594427981 -0500	commit: runningSite-draft
+40ce3284abf927c0515210f1a5b7ffb4f9227274 b6ba286e4b743d58bd427277a4d2f36c48142e1f HGRYK <grykah@gmail.com> 1594429171 -0500	commit: adding google analytics
+b6ba286e4b743d58bd427277a4d2f36c48142e1f 1b9cb79461fad33fab26e1f354f638a2135f3398 HGRYK <grykah@gmail.com> 1595306408 -0600	commit: Add Plotting of London Boroughs
+1b9cb79461fad33fab26e1f354f638a2135f3398 bb5ac81e8261c7d0030d2aeb7b28299463d0273f HGRYK <grykah@gmail.com> 1595307226 -0600	commit: Add plotting of London Boroughs
+bb5ac81e8261c7d0030d2aeb7b28299463d0273f 155062ede3fe78758266be80fe33f4098b10a01f HGRYK <grykah@gmail.com> 1595612606 -0600	commit: working on shiny widget
+155062ede3fe78758266be80fe33f4098b10a01f e1bdfe192964b74b7dabf71a0a881aa8b749c200 HGRYK <grykah@gmail.com> 1595871782 -0600	commit: host for shiny
+e1bdfe192964b74b7dabf71a0a881aa8b749c200 3c35c8a6bfad88a4d959dd2af7f161a5a0e41002 HGRYK <grykah@gmail.com> 1595872984 -0600	commit: shiny widget
+3c35c8a6bfad88a4d959dd2af7f161a5a0e41002 586fb744198ab3facfc86edc6916eab438ee6d06 HGRYK <grykah@gmail.com> 1595896460 -0600	commit: use of dataMaid in Data Cleaning
+586fb744198ab3facfc86edc6916eab438ee6d06 edb18e5a09d511069ef77deebf396c37be94ae75 HGRYK <grykah@gmail.com> 1595901661 -0600	commit: adding in comment functionality
+edb18e5a09d511069ef77deebf396c37be94ae75 4c124f5837c982c08096124ce6eb3b4588d00373 HGRYK <grykah@gmail.com> 1595901793 -0600	commit: comments
+4c124f5837c982c08096124ce6eb3b4588d00373 1f358cae5183cb235915b827385dc5aad2a96bc3 HGRYK <grykah@gmail.com> 1595908866 -0600	commit: still working on Shinny widget
+1f358cae5183cb235915b827385dc5aad2a96bc3 9e1a356be7dc1170802c8ba2d9bfe1e598b961c6 HGRYK <grykah@gmail.com> 1596568923 -0600	commit: shiny app up and running!
+9e1a356be7dc1170802c8ba2d9bfe1e598b961c6 146806a30afc730fcb4b7617a9b4439f6a68ce4b HGRYK <grykah@gmail.com> 1596575441 -0600	commit: html for pandas profiling
+146806a30afc730fcb4b7617a9b4439f6a68ce4b b8b314784a11258eb83ef285b3a13950271e02b9 HGRYK <grykah@gmail.com> 1596575974 -0600	commit: new post on pandas profiling
+b8b314784a11258eb83ef285b3a13950271e02b9 e2ff0369326558d4eb992e1664db3b9971291b2f HGRYK <grykah@gmail.com> 1596577157 -0600	commit: adding html for pandas profile
+e2ff0369326558d4eb992e1664db3b9971291b2f c642ca6945e8c934bb3d85aca5cbf0d7bee053fe HGRYK <grykah@gmail.com> 1596577293 -0600	commit: update to EDA page
+c642ca6945e8c934bb3d85aca5cbf0d7bee053fe 549a975f34664d7d6375dd5ffe7e7a853d889a7e HGRYK <grykah@gmail.com> 1596578983 -0600	commit: update EDA post
+549a975f34664d7d6375dd5ffe7e7a853d889a7e f423d331f6e8a87b21083484057526094957b092 HGRYK <grykah@gmail.com> 1597163421 -0600	commit: New page on COVID19 data visualization
+f423d331f6e8a87b21083484057526094957b092 0f08b3a4d553b462f17682d06ebfc018ad323b2c HGRYK <grykah@gmail.com> 1597163682 -0600	commit: updated shiny app frame
+0f08b3a4d553b462f17682d06ebfc018ad323b2c 31d9e32fd3aa57c5f294276196c8f377b22d41d2 HGRYK <grykah@gmail.com> 1597642320 -0600	commit: testing image repo for website
+31d9e32fd3aa57c5f294276196c8f377b22d41d2 b83d957f995b10cc5d64f5367a0011633514a567 HGRYK <grykah@gmail.com> 1597705517 -0600	commit: new page and associated images.
+b83d957f995b10cc5d64f5367a0011633514a567 a829005278eca95eea4af9e9db443c33110e8256 HGRYK <grykah@gmail.com> 1597705994 -0600	commit: new post on creating varioius plots.
+a829005278eca95eea4af9e9db443c33110e8256 5829ab1e358c92c20efdd374a2aaa21febb33b97 HGRYK <grykah@gmail.com> 1598159489 -0600	commit: minor content corrections
+5829ab1e358c92c20efdd374a2aaa21febb33b97 86b4a738333d853139d27aef9052bc8de1b956e4 HGRYK <grykah@gmail.com> 1599256375 -0600	commit: updating the theme in progress.
