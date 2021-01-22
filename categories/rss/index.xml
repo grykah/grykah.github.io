@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>RSS on Hailey Gryka</title>
+    <link>/categories/rss/</link>
+    <description>Recent content in RSS on Hailey Gryka</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 22 Jan 2021 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/rss/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>RSS Feed</title>
+      <link>/2021/01/22/rss-feed/</link>
+      <pubDate>Fri, 22 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/2021/01/22/rss-feed/</guid>
+      <description>Having a summary of newsfeeds can be useful for a multitude of reasons. Such a summary can reduce the amount of time one spends intaking media content or such techniques could be used for finding articles of interest related to specific topics. Herein is an example of creating a summary of articles from a multitude of sources.
+titledatelinkdescriptionhashA material cracks barriers to asymmetrical toughness2021-01-22 00:00:00http://feeds.</description>
+    </item>
+    
+  </channel>
+</rss>
