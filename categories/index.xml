@@ -6,7 +6,7 @@
     <description>Recent content in Categories on Hailey Gryka</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 15 Sep 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 22 Jan 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,16 +14,34 @@
     <item>
       <title>R</title>
       <link>/categories/r/</link>
-      <pubDate>Tue, 15 Sep 2020 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 22 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>/categories/r/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>RSS</title>
+      <link>/categories/rss/</link>
+      <pubDate>Fri, 22 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/rss/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Jupyter</title>
+      <link>/categories/jupyter/</link>
+      <pubDate>Thu, 07 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/jupyter/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Rmd</title>
       <link>/categories/rmd/</link>
-      <pubDate>Tue, 15 Sep 2020 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 07 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>/categories/rmd/</guid>
       <description></description>
@@ -35,15 +53,6 @@
       <pubDate>Tue, 15 Sep 2020 00:00:00 +0000</pubDate>
       
       <guid>/categories/shiny/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Jupyter</title>
-      <link>/categories/jupyter/</link>
-      <pubDate>Tue, 04 Aug 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/categories/jupyter/</guid>
       <description></description>
     </item>
     

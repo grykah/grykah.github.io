@@ -6,10 +6,20 @@
     <description>Recent content in R on Hailey Gryka</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 15 Sep 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 22 Jan 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/r/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>RSS Feed</title>
+      <link>/2021/01/22/rss-feed/</link>
+      <pubDate>Fri, 22 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/2021/01/22/rss-feed/</guid>
+      <description>Having a summary of newsfeeds can be useful for a multitude of reasons. Such a summary can reduce the amount of time one spends intaking media content or such techniques could be used for finding articles of interest related to specific topics. Herein is an example of creating a summary of articles from a multitude of sources, including Nature, Science Daily, and Wired.
+titledatelinkdescriptionhashGlobal absence and targeting of protective immune states in severe COVID-192021-01-25 00:00:00http://feeds.</description>
+    </item>
     
     <item>
       <title>Movie Recommendation System</title>
