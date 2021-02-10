@@ -6,19 +6,19 @@
     <description>Recent content in data analysis on Hailey Gryka</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 07 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 09 Feb 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/data-analysis/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Keyword Identifier</title>
-      <link>/2021/01/07/keywordidentifier/</link>
-      <pubDate>Thu, 07 Jan 2021 00:00:00 +0000</pubDate>
+      <link>/2021/02/09/keyword-identifier/</link>
+      <pubDate>Tue, 09 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>/2021/01/07/keywordidentifier/</guid>
-      <description>Keyword and Summary GeneratorIn the process of creating a Knowledge Management System, a notable amount of time is spent reading and compiling keywords and summaries for the documents of interest. To optimize this process and reduce the time committment for creating a KMS, NLP techniques are useful.
-Below, an article pdf or url may be entered to obtain the top 10 keywords from the article, top 10 important phrases from the article, a summary of the article, and the number of pages (for a pdf only).</description>
+      <guid>/2021/02/09/keyword-identifier/</guid>
+      <description>Keyword and Summary GeneratorIn the process of creating an online knowledgebank, a notable amount of time is spent reading and compiling keywords and summaries for the documents of interest. To optimize this process and reduce the time committment for creating the knowledgebank, Natural Language Processing techniques are useful.
+Below, an article url may be entered to obtain the top 10 keywords and top 5 phrases from the article.</description>
     </item>
     
     <item>
